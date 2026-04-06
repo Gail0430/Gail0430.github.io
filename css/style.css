@@ -1,5 +1,48 @@
-/* #3A3B3B
-#E8CB49 */
+body{
+	background-color: #f1e8db;
+	padding-top: 82.5px;
+}
+ /* 在手機上的漢堡也能點選 */
+@media (max-width: 991.98px){
+	/* 選擇你開的那個選單區塊*/
+	#navbarSupportedContent{
+	background-color: rgba(255,255,255,0.95);
+	padding: 15px;
+	border-radius: 8;
+	box-shadow: 0.4px 10px rgba(0,0,0,0.1);
+	margin-top: 10; 
+	}
+}
+header{
+	background-color: #f1e8db !important; /* 加上 !important 確保覆蓋 Bootsrtrap 預設的色調*/
+} 
+
+/* 設定選單文字的基本樣式 */
+.navbar-nav .nav-link {
+	/* background-color: transparent !important; */
+	color: #96543b !important;  /* 設定預設的文字顏色為深藍*/
+	font-weight: 500;			  /* 讓字體稍為粗一點 */
+	padding: 8px 16px;			  /* 增加文字週圍的空間，那滑鼠移上去時不會太扁 */
+	border-radius: 8px;			  /* 結未來背景色的點圓角，看來起比較柔和 */
+	transition: all 0.3s ease;	  /* 加入轉場動畫，讓變色過呈不會太生硬 */
+	margin: 0 5px;				  /* 讓每個選單項目之間持一點距離 */
+}
+
+/* 滑鼠移上去  (Hover) 時的特效 深藍色，淺白字 */
+.navbar-nav .nav-link:hover{
+	background-color:  #96543b !important;
+	color: #f1e8db !important; 
+}
+
+/* 下拉式選單一樣的顏色變化效果 */
+.dropdown-menu .dropdown-item:hover{
+	background-color: #96543b !important;
+	color: #f1e8db;
+}
+
+.result-card {
+	border-radius: 12px;
+}
 
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Noto Sans TC', sans-serif;
@@ -20,63 +63,41 @@ li {
 nav li{
 	    margin: 0 13px;
 }
-#intro .jumbotron{
-	background: url('../pictures/mainbg.png');
-	background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    height: 70vh;
-    margin-bottom: 0px;
+/* 學、經歷介紹卡片的陰影設計 */
+.intro-card{
+	/* 陰影設定：x軸偏移 y軸偏移 模糊程度  擴散程度 */
+	box-shadow: 0 4px 12px #96543b;
+	/* 原本的col 的 padding 被移到外層了，內層卡片需要再加上 padding，讓文字不要貼著邊緣 */
+	padding: 12px;
+    /* 加上背景色，陰影效果才會正常顯現 */
+    background-color: #f1e8db;
+    /* 加上圓角，看起來比較柔和 */
+    border-radius: 8px;
+	margin-bottom: 20px;
 }
 
-#intro .jumbotron .container{
-	position:relative;
-    top: 50%;
-    transform: translate(0, -50%);
-}
-#intro .btn{
-	margin-top: 20px;
-}
-.btn{
-    background-color: #E8CB49;
-    padding: 7px 28px;
-    border-radius: 20px;
-    border: none;
-		color: #3A3B3B;
-}
-.btn:hover{
-	opacity:0.8;
-	background-color: #E8CB49!important;
+.intro-card hr{
+	/* hr 樣式設定 */
+	color: #3a2017;
+	border-top: 2px solid #96543b;
+	width: 90%;
+	/* 讓hr線 置中，加入下列兩行 */
+	margin-left: auto;
+	margin-right: auto;;
 }
 #second{
-	padding: 80px 0px;
+	padding: 20px 0px;
 }
 #second h3, #latest h3{
-	margin-bottom: 70px;
+	margin-bottom: 20px;
 	font-size: 32px;
-}
-#second .self img {
-	object-fit: cover;
-	height: 550px;
-	width: 100%;
-	object-position: 80%;
 }
 #second h5{
 	margin-top: 22px;
     font-size: 16px;
 }
 #second li {
-	position: relative;
-}
-#second li::before {
-	content: '';
-	position: absolute;
-	left: -23px;
-	top: 4px;
-	width: 10px;
-	height: 17px;
-	background: #E8CB49;
-	border-radius: 0 100px 100px 0;
+	padding: 0px 10px;
 }
 
 p{
@@ -90,12 +111,30 @@ p.lead{
 	line-height: 31px;
 }
 #latest {
-	background: rgb(248, 248, 248);
-	padding: 80px 0px;
+	background-color: #f1e8db;;
+	/* 順序排列：上、左、右、下 */
+	padding: 20px 0px;	
 }
+
+#latest .col-md-4 .outer {
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    padding: 0px;
+    /* 將 margin 修改為：上 30px、左右 3px、下 0px */
+    margin: 30px 3px 0px !important; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 #latest .upper{
 	position:relative;
+	background-color: #E8C849;
 }
+#latest .upper h3{
+	font-size: 21px;
+	margin-bottom: 8px;
+}
+
 #latest img {
 	height: 370px;
   object-fit: cover;
@@ -116,12 +155,12 @@ p.lead{
 }
 #latest .lower{
 	    padding: 22px;
-
+		box-shadow: 0 0 8px 0 rgba(0,0,0,0.08);
 }
 #latest .col-md-4 .outer{
 	box-shadow: 0 0 8px 0 rgba(0,0,0,0.08);
 	padding: 0px;
-	margin: 0 5px;
+	margin: 0 3px;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -159,13 +198,17 @@ footer{
 }
 footer{
 	border-top: 1px solid rgba(0,0,0,0.09);
+	background-color: #184677;
+	padding: 10px !important;
 }
 footer img{
+	margin-top: 10;
 	margin-bottom: 24px;
 }
 footer h4{
 	font-size: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
+	color: #f1e8db;
 
 }
 footer ul{
@@ -173,13 +216,18 @@ footer ul{
     padding: 0;
 }
 footer ul a{
-	color: #707070;
+	font-size: 16px;
+	color: #f1e8db;
 }
-footer a{
-	color:#E8CB49;
+footer p {
+	color:#f1e8db;
+}
+footer p a{
+	font-size: 16px;
+	color:#f1e8db;
 }
 footer a:hover{
-	color:#E8CB49;
+	color:#f1e8db;
 }
 footer ul a:hover{
 	color: #707070;
@@ -187,7 +235,9 @@ footer ul a:hover{
 	opacity: 0.8;
 }
 footer ul li{
+	font-size: 16px;
 	margin-bottom: 10px;
+	color: #f1e8db;
 }
 footer ul{
 	float: left;
@@ -220,30 +270,9 @@ footer ul{
 #singlecontent{
 	padding: 80 0px;
 }
-.thetag{
-	color: #E8CB49;
-    font-size: 16px;
-    border: 1px solid #E8CB49;
-    padding: 10px 18px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-left: 7px;
-}
+
 #singlecontent h4{
 	margin-top:50px;
-}
-.apply{
-	background-color: #f9f9f9;
-	padding: 44px;
-}
-.apply .btn{
-	font-size: 16px;
-    margin-top: 31px;
-    width: 100%;
-}
-.applybelow{
-	margin-top:80px;
-	text-align: center;
 }
 .btn2{
     color: #707070;
@@ -273,13 +302,6 @@ footer ul{
 }
 #intro .contact .col-md-4 p{
 	color:white;
-}
-#intro .contact .col-md-4 hr {
-    color: white;
-    border-top: 2px solid #E8CB49;
-    width: 87px;
-    margin-top: 24px;
-    margin-bottom: 26px;
 }
 .cinner{
 	position:relative;
@@ -318,8 +340,4 @@ footer ul{
 	    margin-top: 30px;
 	    margin-bottom: 18px;
 	}
-}
-
-#intro .container {
-	padding: 200px 0;
 }
