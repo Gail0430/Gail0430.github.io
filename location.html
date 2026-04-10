@@ -45,8 +45,8 @@
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-house-fill"></i> 物理治療空間</a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="index.html">治療師簡介和治療理念</a></li>
-                      <li><a class="dropdown-item" href="YT.html">YouTube</a></li>
+                    <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-fill me-2"></i>治療師簡介和治療理念</a></li>
+                    <li><a class="dropdown-item" href="YT.html"><i class="bi bi-youtube me-2"></i>YouTube</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -58,8 +58,9 @@
                     立即預約
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="new_reserve.html">新客預約表</a></li>
-                    <li><a class="dropdown-item" href="old_reserve.html">舊客預約表</a></li>
+                    <li><a class="dropdown-item" href="new_reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>新客預約表</a></li>
+                    <li><a class="dropdown-item" href="old_reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>舊客預約表</a></li>
+                    <li><a class="dropdown-item" href="Ticket.html"><i class="bi bi-ticket-detailed me-2"></i>套票建檔</a></li>
                   </ul>
                 </li>
                 <li class="nav-item">
@@ -71,8 +72,35 @@
         </nav>
         </div>
     </header>
-    <!-- 一個section 就是一個主題的空間-->
-       <img src="img/bone_banner.png" alt="物理治療Banner" class="img-fluid shadow">    
+    <section>
+       <!-- Banner 輪播圖 -->
+      <!-- carousel-fade 達成淡入淡出的效果 data-bs-ride="carousel"自動播放  data-bs-interval = "3000" 每3秒切換一張圖 -->
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade shadow" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/bone_banner.png" class="d-block w-100" alt="物理治療的空間" title="物理治療的空間">
+          </div>
+          <div class="carousel-item">
+            <img src="img/Train_Banner.png" class="d-block w-100" alt="訓練動作指導" title="訓練動作指導">
+          </div>
+          <div class="carousel-item">
+            <img src="img/Book_Banner.png" class="d-block w-100" alt="預約和套票操作內容" title="預約和套票操作內容">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>   
     </section>
     <!-- 服務據點 -->
      <section id="latest">
@@ -150,6 +178,7 @@
                   <li><a href="YT.html"><i class="bi bi-youtube me-2"></i>YouTube訓練和放鬆</a></li>
                   <li><a href="new_reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>新客預約</a></li>
                   <li><a href="old_reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>舊客預約</a></li>
+                  <li><a href="Ticket.html"><i class="bi bi-ticket-detailed me-2"></i>套票建檔</a></li>
                   <li><a href="location.html"><i class="bi bi-geo-fill me-2"></i>服務據點</a></li>
                 </ul>
                 </div>

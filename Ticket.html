@@ -15,15 +15,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
-    <!-- 顯示 bootstrap-Icon圖示 -->
+    <!-- 顯示 Icon圖示 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>物理治療的空間</title>
 </head>
 <body>
-    <header class="header-fixed">
+    <header>
         <div class="container ">
-          <!-- bg-0 shadow (sm 是小陰影) logo和Icons 那整列加上陰影效果 -->
-       <nav class="navbar navbar-expand-lg bg-0 shadow fixed-top"> 
+       <nav class="navbar navbar-expand-lg bg-0 shdow fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html"><img src="img/Logo.png" alt="Logo" width="50"></a>
           <!-- 用 order 的方法 -->
@@ -32,15 +31,14 @@
               <div class="d-flex me-3">
                     <a href="https://www.instagram.com/polarbear_physio?igsh=bnZkdzNlejRmcDJl&utm_source=qr" target="_blank" class="me-3"><img src="img/icon-IG.png" alt="IG" width="35"></a>
                     <a href="https://www.youtube.com/@euniceyu" target="_blank" class="me-3"><img src="img/icon-YT.png" alt="YouTube" width="35"></a>
-                    <a href="https://lin.ee/nXOLMsZ" target="_blank"><img src="img/icon-Line.png" alt= "Line官方帳號" width="35"></a>
-              </div>
+                    <a href="https://lin.ee/cEP7QH8" target="_blank"><img src="img/icon-Line.png" alt= "Line官方帳號" width="35"></a>
+                  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <!-- 用 Bootstrag icom 來取代 原本官方棄用的漢堡 SVG圖片 -->
             <i class="bi bi-list" style="font-size: 2em; color: #333;"></i>
-            <!-- <span class="navbar-toggler-icon"></span> 這是官方引用的漢堡 SVG圖片 寫法-->
+            
           </button>
           </div>
-          <!-- nav 選單文字內容 -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
@@ -65,9 +63,10 @@
                     <li><a class="dropdown-item" href="Ticket.html"><i class="bi bi-ticket-detailed me-2"></i>套票建檔</a></li>
                   </ul>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item">
                   <a class="nav-link" href="location.html">
                     <i class="bi bi-geo-fill"></i> 服務據點</a>
+                  </li>
               </ul>
                   
             </div>
@@ -76,18 +75,17 @@
         </div>
     </header>
     <!-- 一個section 就是一個主題的空間-->
-     <section>
-      <!-- Banner 輪播圖 -->
+       <section>
+       <!-- Banner 輪播圖 -->
       <!-- carousel-fade 達成淡入淡出的效果 data-bs-ride="carousel"自動播放  data-bs-interval = "3000" 每3秒切換一張圖 -->
       <div id="carouselExampleIndicators" class="carousel slide carousel-fade shadow" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-indicators">
-          <!-- 設定輪播圖有幾張 -->
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-        <div class="carousel-item active">
+          <div class="carousel-item active">
             <img src="img/bone_banner.png" class="d-block w-100" alt="物理治療的空間" title="物理治療的空間">
           </div>
           <div class="carousel-item">
@@ -105,67 +103,21 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>   
+      </div>      
     </section>
-    <!--第二個section-->
-    <section id="second">
-        <div class="contact">
-          <!-- 在 row 的外圍加上 container 這樣裡面的卡片左右邊，就不跟邊界黏在一起了 -->
-          <div class="container">
-            <div class="row">
-              <h3 class="text-center">物理治療空間的理念</h3>
-                <div class="col-md-4 text-left">
-                  <!-- 每張卡片都加上 h-100 後，每張卡片的高度就會等高了 -->
-                  <div class="intro-card h-100"> 
-                    <h6 class="text-center">治療師的學歷和理念</h6><hr>
-                  <ul>
-                  <!-- 將 Icon 獨立出來，並使用 Bootstrap 間距類別，內建的 me-* (Margin End，右側外距) 類別 -->
-                      <li><i class="bi bi-award-fill me-1"></i>陽明大學-物理治療暨輔助科技學士</li>
-                  </ul>
-                  <p>幫助你改善疼痛、提升姿勢與活動能力，找回身體的平衡與自由。同時也熱衷推廣【自我療癒運動】與【功能訓練】，身體好不是做完治療就結束，而是從日常開始。</p>
-                    <h6 class="text-center">物理治療空間的理念和服務</h6><hr>
-                    <p>針對慢性疼痛、姿勢失衡、自律神經失調、運動傷害與筋膜緊繃，提供專業的評估、徒手治療與功能訓，幫助您找回身體平衡與自由</p>
-                    <ul>
-                        <li text-left><i class="bi bi-book-half me-2"></i>EAR:核心理念</li>
-                        <li><i class="bi bi-book-half me-2"></i>E-Empathy：同理心</li>
-                        <li><i class="bi bi-book-half me-2"></i>A-Alignment：對齊</li>
-                        <li><i class="bi bi-book-half me-2"></i>R-Recovery：復原</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-md-4 text-left">
-                  <div class="intro-card h-100">
-                  <h6 class="text-center">臨床與合作經歷</h6><hr>
-                  <ul>
-                      <li><i class="bi bi-check-square-fill me-2"></i>墊上嬋柔  GYROKINESIS 準指導員</li>
-                      <li><i class="bi bi-check-square-fill me-2"></i>物理筋膜治療+到府服務</li>
-                      <li><i class="bbi bi-check-square-fill me-2"></i>世壯運羽球🏸場邊物理治療師</li>
-                      <li><i class="bi bi-check-square-fill me-2"></i>台北馬拉松賽後緩區服務物理治療師</li>
-                      <li><i class="bi bi-check-square-fill me-2"></i></i>2020年度田徑潛選手培訓隨隊物理治療師</li>
-                      <li><i class="bi bi-check-square-fill me-2"></i>中華民國高考合格物理治療養院</li>
-                  </ul>
-                  </div>
-                </div>
-                <div class="col-md-4 text-left">
-                  <div class="intro-card h-100">
-                  <h6 class="text-center">專業進修與技術背景</h6><hr>
-                  <ul>
-                      <li><i class="bi bi-chat-right-text-fill me-2"></i>顱薦椎療法 CST1 & CST2</li>
-                      <li><i class="bi bi-chat-right-text-fill me-2"></i>徒手神經調整 NM1 / NM2/ NM4（Neural Manipulation by Barral）</li>
-                      <li><i class="bi bi-chat-right-text-fill me-2"></i>內臟筋膜鬆動術  VM1/VM2（Visceral Manipulation by Barral）</li>
-                      <li><i class="bi bi-chat-right-text-fill me-2"></i>嬋柔脊椎螺旋運動 🧘 GYROKINESIS® Level 1 Foundation course</li>
-                      <li><i class="bi bi-chat-right-text-fill me-2"></i>動態貼紮技術 Dynamic Taping Level 1</li>
-                  </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+     <!-- 預約表單 -->
+      <section id="second">
+        <div class="container">
+          <div class="row">
+              <h3 class="text-center">套票建檔</h3>
+          </div>
+          <div class="row">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeRLhTDuGvEu8mkbO3IF6j-FTBD4Fgw_79XJ4ED_pGY4PhOAw/viewform?embedded=true" width="640" height="1555" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
           </div>
         </div>
-    </section>
-    <!-- 資料連結 -->
-    <span>資料內容參考連結：<a href="https://linkgoods.com/earphysio?openExternalBrowser=1" target="_blank">尤慧群物理治療師官網</a></span>
-     <!-- footer -->      
+      </section>
+     <!-- footer -->
     <footer>
         <div class="container">
             <div class="row">
