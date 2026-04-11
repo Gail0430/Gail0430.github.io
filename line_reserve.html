@@ -20,10 +20,9 @@
     <title>物理治療的空間</title>
 </head>
 <body>
-    <header>
+    <header">
         <div class="container ">
-          <!-- bg-0 shadow (sm 是小陰影) logo和Icons 那整列加上陰影效果 -->
-       <nav class="navbar navbar-expand-lg bg-0 shadow fixed-top">
+       <nav class="navbar navbar-expand-lg bg-0 shaodw fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html"><img src="img/Logo.png" alt="Logo" width="50"></a>
           <!-- 用 order 的方法 -->
@@ -73,9 +72,9 @@
                     <li><a class="dropdown-item" href="Ticket_table.html"><i class="bi bi-ticket-detailed me-2"></i>套票使用查詢</a></li>
                   </ul>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item">
                   <a class="nav-link" href="location.html">
-                    <i class="bi bi-geo-fill"></i> 服務據點</a>                 
+                    <i class="bi bi-geo-fill"></i> 服務據點</a>
               </ul>
                   
             </div>
@@ -84,8 +83,8 @@
         </div>
     </header>
     <!-- 一個section 就是一個主題的空間-->
+     <!-- Banner 輪播圖 -->
     <section>
-       <!-- Banner 輪播圖 -->
       <!-- carousel-fade 達成淡入淡出的效果 data-bs-ride="carousel"自動播放  data-bs-interval = "3000" 每3秒切換一張圖 -->
       <div id="carouselExampleIndicators" class="carousel slide carousel-fade shadow" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-indicators">
@@ -112,29 +111,54 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>    
+      </div>     
     </section>
-    <!--第二個section-->
-    <section id="second">
-        <div class="contact">
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <h3 class="text-center">方案價格</h3>
-                    <div class="row justify-content-around align-items-center">
-                        <div class="col-md-5 ">
-                            <img src="img/價目表.png" alt="徒手/ 放鬆 價目表" class="img-fluid shadow">
-                        </div>
-                        <div class="col-md-6">
-                            <img src="img/嬋柔價目表.png" alt="嬋柔價目表" class="img-fluid shadow"> 
-                            <!-- img-fluid 是用在圖片上的 RWD -->
-                        </div>
+
+     <!-- 預約表單 -->
+      <!-- Hero -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">加入官方帳號，輕鬆預約</h2>
+            <p class="text-muted">只需三個簡單步驟，即可完成 【物理治療空間的療程預約】，系統將即時發送確認通知。</p>
+        </div>
+
+        <div class="row g-4 text-center">
+            
+            <div class="col-md-4">
+                <div class="card step-card h-100 p-4">
+                    <h4 class="fw-bold mb-3">1. 加入官方 LINE</h4>
+                    <p class="text-muted mb-4">點擊下方按鈕或掃描 QR Code 加入好友，開啟專屬預約服務。</p>
+                    <img src="img/LineQR.png" alt="加入官方 LINE" class="preview-img mt-auto" >
                     </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card step-card h-100 p-4">
+                    <h4 class="fw-bold mb-3">2. 各項資訊和預約</h4>
+                    <p class="text-muted">打開 LINE 圖文選單，點選「立即預約」，填寫您需要的療程與方便的時間。</p>
+                    <img src="img/book.png" alt="立即預約" class="preview-img mt-auto">
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card step-card h-100 p-4">
+                    <h4 class="fw-bold mb-3">3. 接收成功通知</h4>
+                    <p class="text-muted mb-4">送出表單後，系統會立即發送 Email 與 LINE 通知，預約進度不漏接！</p>
+                    <img src="img/notify.png" alt="預約成功通知" class="preview-img mt-auto">
+                </div>
+            </div>
+
         </div>
-    </section>
-    <!-- 資料連結 -->
-     <span>資料內容參考連結：<a href="https://linkgoods.com/earphysio?openExternalBrowser=1" target="_blank">尤慧群物理治療師官網</a></span>
+
+        <div class="text-center mt-5">
+            <a href="https://lin.ee/nXOLMsZ" class="btn line-btn btn-lg shadow-sm">
+                <i class="fab fa-line me-2"></i> 加入LINE連結：https://lin.ee/nXOLMsZ 
+            </a>
+            <p class="text-muted mt-3 small">加入後不僅能預約，還能享受一對一線上諮詢服務</p>
+        </div>
+    </div>
+</section>
      <!-- footer -->
     <footer>
         <div class="container">
@@ -150,7 +174,7 @@
                 <div class="col-md-4">
                     <h4>網站地圖</h4>
                 <ul>
-                    <li><a href="index.html"><i class="bi bi-house-fill me-2"></i>物理治療空間 </a></li>
+                  <li><a href="index.html"><i class="bi bi-house-fill me-2"></i>物理治療空間 </a></li>
                   <li><a href="YT.html"><i class="bi bi-youtube me-2"></i>YouTube訓練和放鬆</a></li>
                   <li><a href="product.html"><i class="bi bi-cash-coin me-2"></i>方案價格</a></li>
                   <li><a href="line_reserve.html"><i class="bi bi-line me-2"></i>官方line帳號</a></li>

@@ -98,6 +98,39 @@ nav li{
 	flex-shrink: 0; /* 防止圖標因空間不夠而壓縮變形 */
 }
 
+/* 官方帳號預約用的 */
+/* 自訂微調樣式，增加質感 */
+.step-card {
+	border: none;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	background-color: #fcfcfc;
+	border-radius: 12px;
+}
+.step-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.line-btn {
+	background-color: #06C755; /* LINE 官方標準綠 */
+	color: white;
+	border-radius: 30px;
+	padding: 12px 30px;
+	font-weight: bold;
+	transition: background-color 0.2s;
+}
+.line-btn:hover {
+	background-color: #05b34c;
+	color: white;
+}
+/* 讓截圖圖片有好看的陰影 */
+.preview-img {
+	max-width: 100%;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+/* === 結束 == */
+
 #second{
 	padding: 20px 0px;
 }
