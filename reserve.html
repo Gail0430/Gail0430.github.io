@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Gail">
     <!--Bootstrap 一定得要做註解，養成好習慣-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <!-- css-->
@@ -116,15 +117,33 @@
     </section>
 
      <!-- 預約表單 -->
-      <section id="second">
-        <div class="container">
-          <div class="row">
-              <h3 class="text-center">物理治療空間預約表</h3>
-          </div>
-          <div class="row">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfZWM5b4iZSOZ8xtqbagmuK1JQoKiXE-1xS-fYHfZynVvberA/viewform?embedded=true" width="640" height="1602" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
-          </div>
+      <section>
+        <div class="container mt-5 mb-5 max-w-md">
+    <div class="booking-card">
+      <h3 class="mb-3" style="color: #4a6c65;">徒手/放鬆：預約時段選擇</h3>
+      <p class="text-muted">（建議挑選運動後 1~2天進行深層放鬆）</p>
+      
+      <div class="mb-4">
+        <label for="weekPicker" class="form-label fw-bold">選擇預約起始週【只要選星期日】就好：</label>
+        <input type="date" class="form-control" id="weekPicker" onchange="generateWeekGrid()">
+      </div>
+
+      <form id="bookingForm">
+        <div class="table-responsive">
+          <table class="table table-borderless text-center align-middle" id="scheduleTable">
+            <thead class="header-soft">
+              <tr id="dateHeaders">
+                <th>時段</th>
+                </tr>
+            </thead>
+            <tbody id="timeSlots">
+              </tbody>
+          </table>
         </div>
+        <button type="submit" class="btn btn-lg w-100 mt-4" style="background-color: #5b8c85; color: white;">確認預約</button>
+      </form>
+    </div>
+  </div>
       </section>
      <!-- footer -->
     <footer>
@@ -161,5 +180,96 @@
             </div>
         </div>
     </footer>
+<script>
+    const timeslots = ["10:00-13:00", "13:00-17:00", "17:00-21:00"];
+
+    // 確保每週的起始日計算正確 (從星期日開始)
+    function generateWeekGrid() {
+      const selectedDate = new Date(document.getElementById('weekPicker').value);
+      if (isNaN(selectedDate)) return;
+
+      // 取得該週的星期日
+      const day = selectedDate.getDay();
+      const sunday = new Date(selectedDate);
+      sunday.setDate(selectedDate.getDate() - day);
+
+      const dateHeaders = document.getElementById('dateHeaders');
+      const timeSlotsBody = document.getElementById('timeSlots');
+      
+      dateHeaders.innerHTML = '<th>時段</th>';
+      timeSlotsBody.innerHTML = '';
+
+      const daysOfWeek = ['日', '一', '二', '三', '四', '五', '六'];
+      const weekDates = [];
+
+      // 生成表頭
+      for (let i = 0; i < 7; i++) {
+        const currentDate = new Date(sunday);
+        currentDate.setDate(sunday.getDate() + i);
+        const dateStr = `${currentDate.getMonth() + 1}/${currentDate.getDate()}`;
+        weekDates.push(dateStr);
+        dateHeaders.innerHTML += `<th>${dateStr}(${daysOfWeek[i]})</th>`;
+      }
+
+      // 生成時段與核取方塊
+      timeslots.forEach(time => {
+        let row = `<tr><td class="fw-bold">${time}</td>`;
+        for (let i = 0; i < 7; i++) {
+          row += `<td>
+                    <input class="form-check-input slot-checkbox" type="checkbox" name="slots" value="${weekDates[i]} ${time}">
+                  </td>`;
+        }
+        row += `</tr>`;
+        timeSlotsBody.innerHTML += row;
+      });
+    }
+
+    // 初始化本週
+    document.getElementById('weekPicker').valueAsDate = new Date();
+    generateWeekGrid();
+
+// 表單送出處理 (串接 GAS Web App)
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // 非常重要：阻擋表單預設的網頁重新整理行為
+
+  // 收集選取的資料
+  const selected = Array.from(document.querySelectorAll('input[name="slots"]:checked')).map(cb => cb.value);
+  console.log("送出的預約：", selected);
+
+  // 防呆：如果沒有選任何時段就按送出
+  if (selected.length === 0) {
+    alert("請至少選擇一個預約時段！");
+    return;
+  }
+
+  // 將按鈕改為載入中，避免用戶重複點擊
+  const submitBtn = document.querySelector('button[type="submit"]');
+  submitBtn.innerText = "預約傳送中...";
+  submitBtn.disabled = true;
+
+  // 準備要傳給後端的資料包 (包含選取的時段與服務類型)
+  const formData = {
+    slots: selected,
+    serviceType: "徒手/嬋柔" // 這裡帶入分類，讓後端正確分配地點與邏輯
+  };
+
+  // 呼叫 Code.gs 裡的 saveReservation 函式
+  google.script.run
+    .withSuccessHandler(function(response) {
+      // 後端成功處理後會執行這裡
+      alert("預約成功！LINE 通知已發送。");
+      submitBtn.innerText = "確認預約";
+      submitBtn.disabled = false;
+      // 可以在這裡加入清空表單的邏輯： document.getElementById('bookingForm').reset();
+    })
+    .withFailureHandler(function(error) {
+      // 如果後端發生錯誤（例如人數已滿的報錯）會執行這裡
+      alert("預約失敗：" + error.message);
+      submitBtn.innerText = "確認預約";
+      submitBtn.disabled = false;
+    })
+    .saveReservation(formData); // 確保妳的 Code.gs 裡面有一個名為 saveReservation(data) 的函式
+});
+  </script>
 </body>
 </html>

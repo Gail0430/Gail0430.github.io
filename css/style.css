@@ -110,7 +110,6 @@ nav li{
 	transform: translateY(-5px);
 	box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
-
 .line-btn {
 	background-color: #06C755; /* LINE 官方標準綠 */
 	color: white;
@@ -129,8 +128,20 @@ nav li{
 	border-radius: 8px;
 	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-/* === 結束 == */
-
+/* === 預約表格設定 == */
+.booking-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+    .table-responsive { overflow-x: auto; }
+    .form-check-input:checked {
+      background-color: #5b8c85; /* 沉穩綠色系 */
+      border-color: #5b8c85;
+    }
+    .slot-checkbox { width: 1.5rem; height: 1.5rem; cursor: pointer; }
+/* 第二個主題框設定 */
 #second{
 	padding: 20px 0px;
 }
