@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang='zh-Hant-TW'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="物理治療, 疼痛舒緩, 睡眠問題, 自律神經, 產孕婦, 銀髮族"> <!-- 放置SEO -->
+    <meta name="description" content="物理治療師，幫助你改善疼痛、提升姿勢與活動能力，找回身體的平衡和自由."> <!-- 描述網站大鋼-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gail">
+    <!--Bootstrap 一定得要做註解，養成好習慣-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- css-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--字型-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <!-- 顯示 Icon圖示 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>物理治療的空間</title>
+    <!-- 針對GAS 引入 CSS用的 -->
+     <!-- <?!= include('Stylesheet'); ?>  -->
+</head>
+<body>
+    <header>
+        <div class="container ">
+       <nav class="navbar navbar-expand-lg bg-0 shdow fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img src="img/Logo.png" alt="Logo" width="50"></a>
+          <!-- 用 order 的方法 -->
+          <div class="d-flex align-items-center ms-auto order-lg-last">
+            <!-- 放入 IG YT Line 等三個小圖標 -->
+              <div class="d-flex me-3">
+                    <a href="https://www.instagram.com/polarbear_physio?igsh=bnZkdzNlejRmcDJl&utm_source=qr" target="_blank" class="me-3"><img src="img/icon-IG.png" alt="IG" width="35"></a>
+                    <a href="https://www.youtube.com/@euniceyu" target="_blank" class="me-3"><img src="img/icon-YT.png" alt="YouTube" width="35"></a>
+                    <a href="https://lin.ee/cEP7QH8" target="_blank"><img src="img/icon-Line.png" alt= "Line官方帳號" width="35"></a>
+                  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- 用 Bootstrag icom 來取代 原本官方棄用的漢堡 SVG圖片 -->
+            <i class="bi bi-list" style="font-size: 2em; color: #333;"></i>
+            
+          </button>
+          </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-house-fill"></i> 物理治療空間</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-fill me-2"></i>治療師簡介和治療理念</a></li>
+                      <li><a class="dropdown-item" href="YT.html"><i class="bi bi-youtube me-2"></i>YouTube</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="product.html"><i class="bi bi-cash-coin"></i> 方案價格</a>
+                </li>
+                 <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-calendar-check-fill"></i> 
+                    立即預約
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="line_reserve.html"><i class="bi bi-line me-2"></i>官方line帳號</a></li>
+                    <li><a class="dropdown-item" href="reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>物理治療空間預約表</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-ticket-perforated-fill"></i> 
+                    套票建檔及查詢
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="Ticket.html"><i class="bi bi-ticket-detailed me-2"></i>套票建檔</a></li>
+                    <li><a class="dropdown-item" href="Ticket_table.html"><i class="bi bi-ticket-detailed me-2"></i>套票使用查詢</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="location.html">
+                    <i class="bi bi-geo-fill"></i> 服務據點</a>
+                  </li>
+              </ul>                  
+            </div>
+  </div>
+</nav>
+        </div>
+    </header>
+    <!-- 一個section 就是一個主題的空間-->
+       <section>
+       <!-- Banner 輪播圖 -->
+      <!-- carousel-fade 達成淡入淡出的效果 data-bs-ride="carousel"自動播放  data-bs-interval = "3000" 每3秒切換一張圖 -->
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade shadow" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/bone_banner.png" class="d-block w-100" alt="物理治療的空間" title="物理治療的空間">
+          </div>
+          <div class="carousel-item">
+            <img src="img/Train_Banner.png" class="d-block w-100" alt="訓練動作指導" title="訓練動作指導">
+          </div>
+          <div class="carousel-item">
+            <img src="img/Book_Banner.png" class="d-block w-100" alt="預約和套票操作內容" title="預約和套票操作內容">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>      
+    </section>
+
+     <!-- 預約表單 -->
+     <section>
+          
+          <!-- 放GAS 的網頁應用網址 -->
+          <iframe 
+        src="https://script.google.com/macros/s/AKfycbwxp0JYxLfdfSORxzwuDheZnqcE0-9rv80PGaM_6yBDgX6-bi10n78Z90G3j5u0IQna/exec" 
+        width="100%" 
+        height="800px" 
+        frameborder="0" 
+        style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    </iframe>
+      
+    </div>
+  </div>
+      </section>
+     <!-- footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4> E.A.R：核心理念</h4>                  
+                    <ul>
+                      <li><i class="bi bi-book-half me-2"></i>E-Empathy：同理心</li>
+                      <li><i class="bi bi-book-half me-2"></i>A-Alignment：對齊</li>
+                      <li><i class="bi bi-book-half me-2"></i>R-Recovery：復原</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>網站地圖</h4>
+                <ul>
+                  <li><a href="index.html"><i class="bi bi-house-fill me-2"></i>物理治療空間 </a></li>
+                  <li><a href="YT.html"><i class="bi bi-youtube me-2"></i>YouTube訓練和放鬆</a></li>
+                  <li><a href="product.html"><i class="bi bi-cash-coin me-2"></i>方案價格</a></li>
+                  <li><a href="line_reserve.html"><i class="bi bi-line me-2"></i>官方line帳號</a></li>
+                  <li><a href="reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>物理治療空間預約表</a></li>
+                  <li><a href="Ticket.html"><i class="bi bi-ticket-detailed me-2"></i>套票建檔</a></li>
+                  <li><a href="Ticket_table.html"><i class="bi bi-ticket-detailed me-2"></i>套票使用查詢</a></li>
+                  <li><a href="location.html"><i class="bi bi-geo-fill me-2"></i>服務據點</a></li> 
+                </ul>
+                </div>
+                <div class="col-md-4">
+                  <h4>聯絡我們</h4>
+                  <p>
+                    加入官方帳號：<a href="https://lin.ee/nXOLMsZ" alt= "Line官方帳號">https://lin.ee/nXOLMsZ</a><br>
+                    掃碼加入Line：<img src="img/S_line.png" alt= "Line官方帳號" width="80"></a>
+                  </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script>
+  // === UI 控制邏輯 ===
+// ===== 【兩週制預約時段邏輯】 =====
+
+// ✅ 計算從週日開始的完整週期
+function getWeekRange(weekOffset = 0) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  // 算出本週的週日（如果今天是週日，就是今天）
+  const dayOfWeek = today.getDay();
+  const thisWeekSunday = new Date(today);
+  thisWeekSunday.setDate(today.getDate() - dayOfWeek);
+  
+  // 週日加上 weekOffset 週
+  const targetSunday = new Date(thisWeekSunday);
+  targetSunday.setDate(thisWeekSunday.getDate() + (weekOffset * 7));
+  
+  const weekDates = [];
+  for (let i = 0; i < 7; i++) {
+    const currentDate = new Date(targetSunday);
+    currentDate.setDate(targetSunday.getDate() + i);
+    const yyyy = currentDate.getFullYear();
+    const mm = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(currentDate.getDate()).padStart(2, '0');
+    weekDates.push({
+      dateStr: `${yyyy}/${mm}/${dd}`,
+      day: dd,
+      weekday: ['日','一','二','三','四','五','六'][currentDate.getDay()],
+      date: currentDate,
+      isPast: currentDate < today
+    });
+  }
+  
+  return weekDates;
+}
+
+// ✅ 生成單週表格
+function generateWeekTable(weekOffset, tableId) {
+  const serviceInput = document.querySelector('input[name="serviceType"]:checked');
+  if (!serviceInput) return;
+  const service = serviceInput.value;
+
+  const weekDates = getWeekRange(weekOffset);
+  const dateHeaders = document.getElementById(`dateHeaders${weekOffset === 0 ? 1 : 2}`);
+  const timeSlotsBody = document.getElementById(`timeSlots${weekOffset === 0 ? 1 : 2}`);
+  
+  // 清空表格
+  dateHeaders.innerHTML = '<th>時段</th>';
+  timeSlotsBody.innerHTML = '';
+
+  // ✅ 生成表頭（日期和星期）
+  weekDates.forEach(dayInfo => {
+    dateHeaders.innerHTML += `<th>${dayInfo.day}(${dayInfo.weekday})</th>`;
+  });
+
+  // ✅ 根據服務類別決定時段
+  let currentTimeslots = [];
+  if (service === "嬋柔") {
+    currentTimeslots = ["11:00-11:50", "20:00-20:50"];
+  } else {
+    currentTimeslots = ["10:00-13:00", "13:00-17:00", "17:00-21:00"];
+  }
+
+  // ✅ 生成時段行
+  currentTimeslots.forEach(time => {
+    let row = `<tr><td class="fw-bold">${time}</td>`;
+    
+    weekDates.forEach(dayInfo => {
+      const slotValue = `${dayInfo.dateStr} ${time}`;
+      let isDisabled = false;
+      let reason = '';
+
+      // 檢查 1：日期是否已過
+      if (dayInfo.isPast) {
+        isDisabled = true;
+        reason = '過期';
+      }
+      
+      // 檢查 2：嬋柔的時段限制
+      if (service === "嬋柔") {
+        const weekday = dayInfo.date.getDay();
+        
+        // 週一 (1) 只能預約 20:00-20:50
+        if (time === "11:00-11:50" && weekday !== 3) {
+          isDisabled = true;
+          reason = ' ';
+        }
+        // 週三 (3) 只能預約 11:00-11:50
+        else if (time === "20:00-20:50" && weekday !== 1) {
+          isDisabled = true;
+          reason = ' ';
+        }
+      }
+
+      if (isDisabled) {
+        row += `<td>
+          <div class="slot-disabled" style="
+            background-color: #f0f0f0; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            padding: 8px; 
+            color: #999; 
+            font-weight: bold;
+            cursor: not-allowed;
+          ">${reason}</div>
+        </td>`;
+      } else {
+        row += `<td>
+          <input class="form-check-input slot-checkbox" 
+                 type="checkbox" 
+                 name="bookingSlots" 
+                 value="${slotValue}"
+                 style="width: 20px; height: 20px; cursor: pointer;">
+        </td>`;
+      }
+    });
+    row += `</tr>`;
+    timeSlotsBody.innerHTML += row;
+  });
+}
+
+// ✅ 載入兩週的表格
+function loadBothWeeks() {
+  generateWeekTable(0, 'scheduleTable1');  // 第一週
+  generateWeekTable(1, 'scheduleTable2');  // 第二週
+}
+
+// ✅ 監聽服務類別變更
+function handleServiceChange() {
+  const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+  const locSelect = document.getElementById('locationSelect');
+  
+  if (serviceType === '嬋柔') {
+    locSelect.value = '國父紀念館';
+    locSelect.setAttribute('disabled', 'true');
+  } else {
+    locSelect.removeAttribute('disabled');
+    locSelect.value = ''; 
+  }
+  
+  if (typeof toggleAddress === 'function') {
+    toggleAddress();
+  }
+  
+  // ✅ 重新載入時段表
+  loadBothWeeks();
+}
+
+// 【修改：toggleAddress 函式 - 控制到府服務地輸入框】
+function toggleAddress() {
+  const locationSelect = document.getElementById('locationSelect');
+  const addressBox = document.getElementById('addressBox');
+  const addressInput = document.getElementById('addressInput');
+  
+  if (locationSelect.value === '到府服務') {
+    // ✅ 顯示文字輸入框，並設為必填
+    addressBox.classList.remove('d-none');
+    addressInput.setAttribute('required', 'required');  // 改為 'required' 標準值
+    addressInput.focus();  // ✅ 自動聚焦，方便用戶輸入
+  } else {
+    // ✅ 隱藏文字輸入框
+    addressBox.classList.add('d-none');
+    addressInput.removeAttribute('required');
+    addressInput.value = '';  // 清空內容
+  }
+}
+
+// ✅ 控制「其他」選項的文字輸入框顯示與隱藏
+function toggleOtherInput(checkboxId, textInputId) {
+  const checkbox = document.getElementById(checkboxId);
+  const textInput = document.getElementById(textInputId);
+
+  if (checkbox.checked) {
+    // 當勾選時，移除隱藏類別，並設為必填
+    textInput.classList.remove('d-none');
+    textInput.setAttribute('required', 'required');
+    textInput.focus(); // 自動聚焦方便輸入
+  } else {
+    // 取消勾選時，加上隱藏類別，清空內容並移除必填
+    textInput.classList.add('d-none');
+    textInput.removeAttribute('required');
+    textInput.value = '';
+  }
+}
+
+// ✅ 頁面初始化
+document.addEventListener('DOMContentLoaded', function(){
+  loadBothWeeks();
+  
+  // ✅ 每天午夜自動刷新（檢查是否進入新週日）
+  function scheduleWeeklyUpdate() {
+    const now = new Date();
+    const nextMidnight = new Date(now);
+    nextMidnight.setDate(nextMidnight.getDate() + 1);
+    nextMidnight.setHours(0, 0, 0, 0);
+    
+    const timeUntilMidnight = nextMidnight - now;
+    
+    setTimeout(() => {
+      loadBothWeeks();  // 午夜時更新
+      scheduleWeeklyUpdate();  // 繼續排程下一次更新
+    }, timeUntilMidnight);
+  }
+  
+  scheduleWeeklyUpdate();
+});
+
+
+// === 表單送出邏輯 ===
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // ✅ 處理「主要不舒服的位置」
+  let selectedPainAreas = [];  // ✅ 修正變數名稱
+  const painCheckboxes = document.querySelectorAll('input[name="painArea"]:checked');
+  painCheckboxes.forEach(function(box) {
+    if (box.value === '其他') {
+      // 修改 ID 為 painTextIput
+      const otherText = document.getElementById('painTextInput').value;  // ✅ 修正為 painTextInput
+      if (otherText.trim() !== "") {
+        selectedPainAreas.push('其他：' + otherText);
+      } else {
+      // 如果勾選「其他」但沒填文字給予提示
+      alert("請填寫不舒服的位置！");
+      return;
+      }
+    }else {
+      selectedPainAreas.push(box.value);
+    }
+  });
+
+// ✅ 驗證：至少要勾選一個位置
+  if (selectedPainAreas.length === 0){
+    alert ("請至少選擇一個不舒服的位置！");
+    return;
+  }
+  const finalPainArea = selectedPainAreas.join(', ');
+
+  // ✅ 處理「如何得知我們」
+  let selectSources = [];
+  const sourceCheckboxes = document.querySelectorAll('input[name="source"]:checked');
+  sourceCheckboxes.forEach(function(box) {
+    if (box.value === '其他') {
+     const otherText = document.getElementById('sourceTextInput').value;
+      if (otherText.trim() !== '') {
+        selectSources.push('其他：' + otherText);
+      }else{
+        // 如果勾選「其他」但沒填文字給予提示
+      alert("請說明得知來源！");
+      return;
+      }
+    } else {
+      selectSources.push(box.value);
+    }
+  });
+  
+  // ✅ 驗證：至少要勾選一個位置
+  if (selectSources.length === 0){
+    alert ("請至少選擇一個得知我們的來源！");
+    return;
+  }
+  const finalSource = selectSources.join(', ');
+
+  // ✅ 取得預約時段
+  const slotCheckboxes = document.querySelectorAll('input[name="bookingSlots"]:checked');
+  const selectedSlots = Array.from(slotCheckboxes).map(cb => cb.value);
+  
+  // ✅ 驗證：至少選一個時段
+  if (selectedSlots.length === 0) {
+    alert("請至少選擇一個預約時段！");
+    return;
+  }
+
+  // ✅ 整理表單資料
+  const formData = {
+    serviceType: document.querySelector('input[name="serviceType"]:checked').value,
+    email: document.querySelector('input[name="email"]').value,
+    name: document.querySelector('input[name="name"]').value,
+    phone: document.querySelector('input[name="phone"]').value,
+    gender: document.querySelector('input[name="gender"]:checked').value,
+    dob: document.querySelector('input[name="dob"]').value,
+    job: document.querySelector('select[name="job"]').value,
+    exercise: document.querySelector('select[name="exercise"]').value,
+    location: document.getElementById('locationSelect').value,
+    address: document.getElementById('addressInput').value,
+    painAreas: finalPainArea, 
+    sources: finalSource,
+    slots: selectedSlots,
+    timestamp : new Date().toLocaleString('zh-TW'), // 時間戳記
+    verifyToken: "EarSpace_MakeinGodrelive6610!" 
+  };
+
+  // // ✅ 防連點
+  const btn = document.getElementById('submitBtn');
+  btn.innerHTML = `<span class="spinner-border spinner-border-sm"></span> 處理中...`;
+  btn.disabled = true;
+
+  if (typeof google !== 'undefined' && google.script) {
+    google.script.run
+      .withSuccessHandler(function(response) {
+        if(response && response.status === "success"){
+          showSuccessView(formData);
+        } else {
+          alert("系統錯誤或驗證失敗：" + (response ? response.message : "無回傳資料"));
+          btn.disabled = false; 
+          btn.innerHTML = "確認預約"; 
+        }
+      })
+      .withFailureHandler(function(err) { 
+        alert("發生錯誤：" + err); 
+        btn.disabled = false;
+        btn.innerHTML = "確認預約"; // 原本的innerText 改成 innerHTML
+      })
+      .processBooking(formData);
+  } else {
+    // 本地測試用
+    console.log("模擬送出成功！資料如下：", formData);
+    setTimeout(() => { showSuccessView(formData); }, 1000);
+  }
+});
+
+    // === 顯示預約成功畫面 (Requirement 15) ===
+    function showSuccessView(data) {
+      document.getElementById('formSection').classList.add('d-none'); // 隱藏表單
+      document.getElementById('successSection').classList.remove('d-none'); // 顯示成功頁
+      
+      // 將資料列印在畫面上(包含服務類別和不舒服位置)
+      const summaryHTML = `
+        <h5 class="mb-3 text-secondary">預約明細</h5>
+        <p><strong>姓名：</strong> ${data.name}</p>
+        <p><strong>信箱：</strong> ${data.email}</p>
+        <p><strong>電話：</strong> ${data.phone}</p>
+        <p><strong>生理性別：</strong> ${data.gender}</p>
+        <p><strong>服務類別：</strong> <span style="color:#5b8c85; font-weigth:bold">${data.serviceType}</span></p>
+        <p><strong>不舒服位置：</strong> ${data.painAreas}</p>
+        <p><strong>得知來源</strong> ${data.sources}</p>
+        <p><strong>地點：</strong> ${data.location} ${data.address ? '('+data.address+')' : ''}</p>
+        <p><strong>預約時段： (共 ${data.slots.length} 個)</strong></p>
+        <ul style="margin-toop; 10px; padding-left:20px;">
+        ${data.slots.map(slot => `<li style="margin-bottom: 5px;>">${slot}</li>`).join('')}
+        </ul>
+        <hr style="margin: 15px 0;">
+        <p style = "font-size: 0.9rem; color: #990;">
+          <stromg>提交時間： </strong> ${data.timestamp}
+        </p>
+      `;
+      document.getElementById('resultSummary').innerHTML = summaryHTML;
+    }
+  </script>
+</body>
+</html>
