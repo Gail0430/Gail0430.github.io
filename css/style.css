@@ -77,7 +77,7 @@ nav li{
 	這就導致圖片下方空出了一大塊背景，且 Bootstrap 的輪播指示器（白色虛線）會掉到這 390px 的最底部。
 */
 .carousel-item img {
-	width: 100%;
+	width: 100% !important;
 	height: 390px; /* 限制最大高度，解決原本因桌機預設 600px 太高的問題 */
 	object-fit: cover;
 	object-position: center; /* 確保視覺在中間 */
