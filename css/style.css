@@ -82,6 +82,13 @@ nav li{
 	object-fit: cover;
 	object-position: center; /* 確保視覺在中間 */
 }
+	/* 針對手機版 (小螢幕) 的微調 */
+@media (max-width: 768px) {
+  .carousel-item img {
+    height: 250px; /* 手機螢幕較窄，若維持 390px 會顯得太長、裁切掉太多左右畫面。降為 250px 比例較佳。 */
+  }
+}
+
 
 /* 學、經歷介紹卡片的陰影設計 */
 .intro-card{
@@ -321,6 +328,9 @@ footer{
 	background-color: #184677;
 	padding: 10px !important;
 }
+footer container {
+	padding-right: 20 !important;
+}
 footer img{
 	margin-top: 10;
 	margin-bottom: 24px;
@@ -407,22 +417,7 @@ footer ul{
 	opacity: 0.8;
 	color: #707070;
 }
-/* #intro .contact{
-	height: auto;
-    padding: 0px;
-}
-#intro .contact .col-md-4{
-	height: 400px;
-    background: rgba(0,0,0,0.5);
-    padding: 66px;
-    text-align: center;
-}
-#intro .contact .col-md-4 h1{
-	color:white;
-}
-#intro .contact .col-md-4 p{
-	color:white;
-} */
+
 .cinner{
 	position:relative;
     top: 50%;
