@@ -78,7 +78,7 @@ nav li{
 */
 .carousel-item img {
 	width: 100%;
-	max-height: 390px; /* 限制最大高度，解決原本因桌機預設 600px 太高的問題 */
+	height: 390px; /* 限制最大高度，解決原本因桌機預設 600px 太高的問題 */
 	object-fit: cover;
 	object-position: center; /* 確保視覺在中間 */
 }
