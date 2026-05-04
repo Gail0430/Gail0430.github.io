@@ -1,6 +1,8 @@
 body{
 	background-color: #f1e8db;
 	padding-top: 82.5px;
+	font-family: 'Noto Sans TC', sans-serif;
+    color: #333;
 }
  /* 在手機上的漢堡也能點選 */
 @media (max-width: 991.98px){
@@ -64,6 +66,19 @@ li {
 nav li{
 	    margin: 0 13px;
 }
+/* 針對輪播圖內的圖片元素，適用bs給的套件 */
+.carousel-inner{
+	height: 390px; /* 桌機版固定高度 */
+	aspect-ratio: 16/5; /* 強制設定長寬比 */
+	overflow: hidden; /* 隱藏超出的部份 */
+}
+
+.carousel-inner img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 /* 學、經歷介紹卡片的陰影設計 */
 .intro-card{
 	/* 陰影設定：x軸偏移 y軸偏移 模糊程度  擴散程度 */
@@ -98,36 +113,91 @@ nav li{
 	flex-shrink: 0; /* 防止圖標因空間不夠而壓縮變形 */
 }
 
+/* ✅ 時段表格的樣式 */
+/* 已滿或不可選的時段樣式 */
+.slot-disabled {
+  background-color: #e8e8e8 !important;
+  border: 2px solid #d0d0d0 !important;
+  border-radius: 6px;
+  padding: 10px 6px;
+  color: #999;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  cursor: not-allowed;
+}
+
+/* 可選的複選框樣式 */
+.slot-checkbox {
+  accent-color: #5b8c85;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slot-checkbox:hover {
+  transform: scale(1.2);
+}
+
+.slot-checkbox:checked {
+  background-color: #5b8c85;
+  border-color: #5b8c85;
+}
+
+/* 表格頭部樣式 */
+.header-soft {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+.header-soft th {
+  padding: 12px 8px;
+  font-size: 0.95rem;
+}
+
+
 /* 官方帳號預約用的 */
-/* 自訂微調樣式，增加質感 */
-.step-card {
-	border: none;
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	background-color: #fcfcfc;
-	border-radius: 12px;
-}
-.step-card:hover {
-	transform: translateY(-5px);
-	box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-.line-btn {
-	background-color: #06C755; /* LINE 官方標準綠 */
-	color: white;
-	border-radius: 30px;
-	padding: 12px 30px;
-	font-weight: bold;
-	transition: background-color 0.2s;
-}
-.line-btn:hover {
-	background-color: #05b34c;
-	color: white;
-}
-/* 讓截圖圖片有好看的陰影 */
-.preview-img {
-	max-width: 100%;
-	border-radius: 8px;
-	box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+.main-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      padding: 2.5rem;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+    .form-label { font-weight: bold; color: #4a6c65; }
+    .btn-primary-custom {
+      background-color: #5b8c85; 
+      border-color: #5b8c85;
+      color: white;
+    }
+    .btn-primary-custom:hover { background-color: #4a6c65; color: white; }
+    
+    /* 日曆網格樣式 */
+    .table-responsive { overflow-x: auto; }
+    .header-soft { background-color: #e8f0ec; border-radius: 8px; }
+    .form-check-input:checked { background-color: #5b8c85; border-color: #5b8c85; }
+    .slot-checkbox { width: 1.5rem; height: 1.5rem; cursor: pointer; }
+    
+    /* 鎖定狀態 (已預約) */
+    .slot-booked {
+      background-color: #e9ecef !important;
+      border-color: #dee2e6 !important;
+      cursor: not-allowed !important;
+      position: relative;
+    }
+    .slot-booked::after {
+      content: "滿";
+      font-size: 0.7rem;
+      color: #dc3545;
+      position: absolute;
+      top: -2px; left: 2px;
+    }
 /* === 預約表格設定 == */
 .booking-card {
       background: white;
