@@ -119,22 +119,106 @@
       </div>
     </section>
     <!--第二個section-->
-    <section id="second">
-        <div class="contact">
-            <div class="row justify-content-center">
-                <div class="col-md-11">
-                    <h3 class="text-center">EAR Web Design</h3>
-                    <div class="row justify-content-around align-items-center">
-                        <div >
-                            <img src="img/報價圖.png" alt=" 報價圖" class="img-fluid shadow">
-                        </div>
-                        
+    <!-- 區塊一：分成兩個卡片 -->
+        <div class="main-wrapper">
+          <div class="container">
+        <section class="section-one">
+            <div class="card card-left">
+                <h1 class="main-title">夢想起步</h1>
+                <h3 class="sub-title">官方帳號 x 簡易官網</h3>
+                <p class="intro-text">
+                    適合個人工作室、品牌形象展示，<br>
+                    快速擁有屬於您的官方網站
+                </p>
+                <div class="price-section">
+                    <p class="price-label">專案價格</p>
+                    <!-- 根據要求，這裡不是按鈕樣式，只是普通文字 -->
+                     <a href="https://lin.ee/nXOLMsZ" class="btn line-btn btn-lg shadow-sm">
+                <i class="fab fa-line me-2"></i> 加官方帳號詢問 
+            </a>
+                </div>
+            </div>
+            <div class="card card-right device-card">
+              <h3 class="main-title">EAR Web理念</h3>
+              <img src="img/EAR理念.jpg" alt="EAR理念" class="preview-img mt-auto">       
+        </section>
+
+        <!-- 區塊二：功能卡片 presenting 功能介紹 -->
+        <section class="section-two">
+            <div class="card card-left features-list-card">
+                <h3 class="main-title">功能介紹</h3>
+                <ul class="feature-checklist">
+                    <li class="check-blue">RWD 響應式設計</li>
+                    <li class="check-green">基本 SEO 設定</li>
+                    <li class="check-blue">聯絡表單 (基本款)</li>
+                    <li class="check-yellow">Google 地圖嵌入</li>
+                    <li class="check-red">社群媒體連結</li>
+                    <li class="check-green">基本操作教學</li>
+                </ul>
+            </div>
+            <div class="card card-right features-info-card">
+                <!-- 這裡模仿圖片中間的四個圓形圖標及內容 -->
+                <div class="info-items-container">
+                    <div class="info-item item-pages">
+                        <div class="icon-circle icon-yellow">📄</div>
+                        <p class="label">頁面數量</p>
+                        <p class="value">1~3 頁</p>
+                    </div>
+                    <div class="info-item item-type">
+                        <div class="icon-circle icon-green">💻</div>
+                        <p class="label">網站型式</p>
+                        <p class="value">一頁式 / 多頁式</p>
+                    </div>
+                    <div class="info-item item-design">
+                        <div class="icon-circle icon-red">✏️</div>
+                        <p class="label">設計方式</p>
+                        <p class="value">套版設計 (使用現成模板)</p>
+                    </div>
+                    <div class="info-item item-features">
+                        <div class="icon-circle icon-blue">⚙️</div>
+                        <p class="label">功能特色</p>
+                        <p class="value">基礎功能 (表單、地圖、社群連結等)</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    </section>
+        </section>
+
+        <!-- 區塊三：製作週期 (不用按鈕，模仿 image_1 呈現) -->
+        <section class="section-three timeline-section">
+            <div class="timeline-header">
+                <!-- 用 CSS 繪製燈泡圖標 -->
+                <div class="icon-lightbulb">💡</div>
+                <div class="period-text">
+                    <h3>製作週期 約 3 週</h3>
+                    <p>實際交易依需求內容調整</p>
+                </div>
+            </div>
+            <!-- 模仿圖片上的流程圖樣式 -->
+            <div class="timeline-body">
+                <div class="timeline-point point-blue">
+                    <div class="circle"></div>
+                    <p class="point-label">需求確認</p>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-point point-green">
+                    <div class="circle"></div>
+                    <p class="point-label">設計製作</p>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-point point-red">
+                    <div class="circle"></div>
+                    <p class="point-label">內容確認</p>
+                </div>
+                <div class="timeline-line"></div>
+                <div class="timeline-point point-yellow">
+                    <div class="circle"></div>
+                    <p class="point-label">網站上線</p>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+    </div>
     
     <footer>
         <div class="container">
@@ -165,5 +249,27 @@
             </div>
         </div>
     </footer>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'noto': ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-blue': '#1565C0',
+                        'brand-blue-dark': '#0D47A1',
+                        'brand-green': '#43A047',
+                        'brand-green-dark': '#2E7D32',
+                        'brand-yellow': '#F9A825',
+                        'brand-yellow-dark': '#F57F17',
+                        'brand-red': '#E53935',
+                        'brand-orange': '#FB8C00',
+                        'brand-navy': '#1E3A5F',
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>

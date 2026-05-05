@@ -66,6 +66,556 @@ li {
 nav li{
 	    margin: 0 13px;
 }
+/* Gpt index */
+
+.section {
+  margin-bottom: 40px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* 區塊一 */
+.hero {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero .left,
+.hero .right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #2b5ea8;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.desc {
+  margin-top: 15px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.price {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #2b5ea8;
+  font-weight: bold;
+}
+
+/* EAR */
+.ear-item {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+/* 區塊二 */
+.features {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.features .card {
+  flex: 1;
+  min-width: 280px;
+}
+
+.features h3 {
+  margin-bottom: 15px;
+  color: #2b5ea8;
+}
+
+ul {
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+/* 區塊三（流程） */
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+
+.circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.line {
+  height: 2px;
+  background: #ccc;
+  flex: 1;
+}
+
+/* 顏色 */
+.blue { background: #2b5ea8; }
+.green { background: #4CAF50; }
+.red { background: #e74c3c; }
+.yellow { background: #f1c40f; }
+
+/* RWD */
+@media (max-width: 768px) {
+  .hero, .features {
+    flex-direction: column;
+  }
+
+  .timeline {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .line {
+    width: 2px;
+    height: 40px;
+  }
+}
+
+
+
+/* Gemini index 需要的 */
+.main-wrapper {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* 區塊之間的間距 */
+}
+
+/* Header */
+header {
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #004085; /* 深藍色，模仿 logo */
+}
+
+/* 卡片通用樣式 */
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* 更柔和的陰影 */
+    padding: 30px;
+    box-sizing: border-box; /* 確保 padding 不影響寬度 */
+    flex: 1; /* 讓卡片在 flex 容器中平分空間 */
+}
+
+/* ==============================
+   2. 區塊一：RWD 佈局與插圖
+   ============================== */
+.section-one {
+    display: flex;
+    flex-wrap: wrap; /* 允許手機版疊加 */
+    gap: 20px;
+    align-items: stretch; /* 讓兩個卡片高度一致 */
+}
+
+/* 左卡片 */
+.section-one .card-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    font-size: 32px;
+    color: #004085;
+    margin: 0 0 5px 0;
+}
+
+.sub-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.intro-text {
+    font-size: 16px;
+    margin-bottom: auto; /* 將價格推到底部 */
+}
+
+.price-section {
+	background-color: #00B900;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.price-label {
+	background-color: #96543b;
+	border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    font-size: 18px;
+    color: #f1e8db;
+    font-weight: bold;
+    margin-left: 10;
+}
+
+.join-text {
+    font-size: 16px;
+    color: #28a745; /* 綠色文字 */
+    font-weight: bold;
+    margin: 0;
+}
+
+/* 右卡片 (設備插圖) */
+.device-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    min-height: 200px;
+}
+
+/* CSS 繪製電腦 */
+.desktop-sketch {
+    position: absolute;
+    left: 20%;
+    bottom: 20px;
+    width: 60%;
+    height: 70%;
+    background-color: #ddd; /* 設備外殼顏色 */
+    border-radius: 10px 10px 0 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop-sketch .screen {
+    flex: 1;
+    background-color: #000; /* 螢幕顏色 */
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.desktop-sketch .stand {
+    height: 15px;
+    width: 30%;
+    background-color: #bbb;
+    margin: 0 auto;
+    border-radius: 0 0 5px 5px;
+}
+
+/* CSS 繪製平板 */
+.tablet-sketch {
+    position: absolute;
+    right: 15%;
+    bottom: 10px;
+    width: 35%;
+    height: 80%;
+    background-color: #ddd;
+    border-radius: 12px;
+    z-index: 2; /* 在電腦前面 */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tablet-sketch .screen {
+    flex: 1;
+    background-color: #fff;
+    margin: 8px;
+    border-radius: 8px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+/* ==============================
+   3. 區塊二：功能介紹與圖標
+   ============================== */
+.section-two {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* 左卡片 (功能列表) */
+.features-list-card h3 {
+    color: #004085;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.feature-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 桌機版兩列 */
+    gap: 15px;
+}
+
+.feature-checklist li {
+    font-size: 16px;
+    padding-left: 25px;
+    position: relative;
+}
+
+/* 模仿選勾樣式 */
+.feature-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-weight: bold;
+}
+
+.check-blue::before { color: #007bff; }
+.check-green::before { color: #28a745; }
+.check-yellow::before { color: #ffc107; }
+.check-red::before { color: #dc3545; }
+
+/* 右卡片 (圖標與內容) */
+.info-items-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 桌機版兩列 */
+    gap: 20px;
+    height: 100%;
+}
+
+.info-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icon-circle {
+    font-size: 32px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* 圖標顏色設定 */
+.icon-yellow { background-color: #fff3cd; color: #ffc107; border: 3px solid #ffc107; }
+.icon-green { background-color: #d4edda; color: #28a745; border: 3px solid #28a745; }
+.icon-red { background-color: #f8d7da; color: #dc3545; border: 3px solid #dc3545; }
+.icon-blue { background-color: #cfe2f3; color: #007bff; border: 3px solid #007bff; }
+
+.info-item .label {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 2px 0;
+}
+
+.info-item .value {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+/* ==============================
+   4. 區塊三：製作週期流程圖
+   ============================== */
+.timeline-section {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* CSS 繪製燈泡圖標 */
+.icon-lightbulb {
+    width: 50px;
+    height: 50px;
+    background-color: #004085; /* 深藍色圓圈 */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.period-text h3 {
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.period-text p {
+    color: #777;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* 模仿流程圖佈局 */
+.timeline-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+}
+
+.timeline-point {
+    text-align: center;
+    position: relative;
+    flex: 0 0 auto;
+    z-index: 2; /* 在線條上面 */
+}
+
+.timeline-point .circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    border: 3px solid #ccc; /* 預設邊框 */
+}
+
+/* 時間點顏色設定 */
+.point-blue .circle { background-color: #007bff; border-color: #007bff; }
+.point-green .circle { background-color: #28a745; border-color: #28a745; }
+.point-red .circle { background-color: #dc3545; border-color: #dc3545; }
+.point-yellow .circle { background-color: #ffc107; border-color: #ffc107; }
+
+.point-label {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* 繪製連接線 */
+.timeline-line {
+    flex: 1 1 auto;
+    height: 3px;
+    background-color: #ccc; /* 預設線條顏色 */
+    margin: 0 10px;
+    position: relative;
+    top: -12.5px; /* 將線條向上對齊到圓圈中間 (圓圈高15px + margintop10px / 2 = 12.5px) */
+    z-index: 1; /* 在圓圈下方 */
+}
+
+/* ==============================
+   5. RWD 媒體查詢 (手機版)
+   ============================== */
+@media (max-width: 768px) {
+    .main-wrapper {
+        padding: 10px;
+    }
+
+    .container {
+        gap: 20px;
+    }
+
+    .card {
+        padding: 20px;
+        flex: 1 1 100%; /* 手機版全寬堆疊 */
+    }
+
+    /* 區塊一：設備插圖縮小 */
+    .desktop-sketch {
+        left: 10%;
+        width: 80%;
+    }
+    .tablet-sketch {
+        right: 5%;
+        width: 45%;
+    }
+
+    /* 區塊二：功能列表和圖標變單列 */
+    .feature-checklist {
+        grid-template-columns: 1fr;
+    }
+    .info-items-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* 區塊三：流程圖垂直排列 */
+    .timeline-body {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding-left: 50px; /* 為左側線條留空間 */
+    }
+
+    .timeline-line {
+        display: none; /* 隱藏水平線 */
+    }
+
+    .timeline-point {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .timeline-point .circle {
+        margin: 0; /* 移除垂直 margin */
+    }
+
+    /* 為手機版添加垂直連接線 (使用偽元素) */
+    .timeline-point::before {
+        content: "";
+        position: absolute;
+        left: 6px; /* 將線條對齊到圓圈中間 (圓圈寬15px+邊框3px / 2 = 9px, 但需微調) */
+        top: 20px; /* 延伸到下一個點 */
+        width: 3px;
+        height: calc(100% + 20px); /* 延伸到下一個點 */
+        background-color: #ccc;
+        z-index: -1; /* 放在點下方 */
+    }
+
+    .timeline-point:last-child::before {
+        display: none; /* 最後一個點沒有向下延伸的線 */
+    }
+
+    /* 手機版垂直線條顏色 */
+    .point-blue::before { background-color: #007bff; }
+    .point-green::before { background-color: #28a745; }
+    .point-red::before { background-color: #dc3545; }
+}
 
 /* 學、經歷介紹卡片的陰影設計 */
 .intro-card{
@@ -305,9 +855,6 @@ footer{
 	background-color: #184677;
 	padding: 10px !important;
 }
-footer container {
-	padding-right: 20 !important;
-}
 footer img{
 	margin-top: 10;
 	margin-bottom: 24px;
@@ -394,7 +941,22 @@ footer ul{
 	opacity: 0.8;
 	color: #707070;
 }
-
+/* #intro .contact{
+	height: auto;
+    padding: 0px;
+}
+#intro .contact .col-md-4{
+	height: 400px;
+    background: rgba(0,0,0,0.5);
+    padding: 66px;
+    text-align: center;
+}
+#intro .contact .col-md-4 h1{
+	color:white;
+}
+#intro .contact .col-md-4 p{
+	color:white;
+} */
 .cinner{
 	position:relative;
     top: 50%;
