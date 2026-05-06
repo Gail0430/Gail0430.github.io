@@ -66,135 +66,6 @@ li {
 nav li{
 	    margin: 0 13px;
 }
-/* Gpt index */
-
-.section {
-  margin-bottom: 40px;
-}
-
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-/* 區塊一 */
-.hero {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.hero .left,
-.hero .right {
-  flex: 1;
-  min-width: 300px;
-}
-
-.title {
-  font-size: 36px;
-  font-weight: bold;
-  color: #2b5ea8;
-}
-
-.subtitle {
-  font-size: 20px;
-  margin: 10px 0;
-}
-
-.desc {
-  margin-top: 15px;
-  line-height: 1.6;
-  color: #666;
-}
-
-.price {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #2b5ea8;
-  font-weight: bold;
-}
-
-/* EAR */
-.ear-item {
-  margin-bottom: 15px;
-  font-size: 18px;
-}
-
-/* 區塊二 */
-.features {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.features .card {
-  flex: 1;
-  min-width: 280px;
-}
-
-.features h3 {
-  margin-bottom: 15px;
-  color: #2b5ea8;
-}
-
-ul {
-  padding-left: 20px;
-  line-height: 1.8;
-}
-
-/* 區塊三（流程） */
-.timeline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.step {
-  text-align: center;
-  flex: 1;
-  min-width: 120px;
-}
-
-.circle {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin: auto;
-}
-
-.line {
-  height: 2px;
-  background: #ccc;
-  flex: 1;
-}
-
-/* 顏色 */
-.blue { background: #2b5ea8; }
-.green { background: #4CAF50; }
-.red { background: #e74c3c; }
-.yellow { background: #f1c40f; }
-
-/* RWD */
-@media (max-width: 768px) {
-  .hero, .features {
-    flex-direction: column;
-  }
-
-  .timeline {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .line {
-    width: 2px;
-    height: 40px;
-  }
-}
-
-
 
 /* Gemini index 需要的 */
 .main-wrapper {
@@ -248,14 +119,17 @@ header {
 
 .main-title {
     font-size: 32px;
-    color: #004085;
+    color: #33928e;
     margin: 0 0 5px 0;
 }
 
+.sub {
+    color: #d88339;
+}
 .sub-title {
     font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: #ca4d3f;
     margin-top: 0;
     margin-bottom: 15px;
 }
