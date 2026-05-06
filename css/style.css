@@ -702,6 +702,7 @@ footer ul{
 footer ul a{
 	font-size: 16px;
 	color: #f1e8db;
+	text-decoration: none;
 }
 footer p {
 	color:#f1e8db;
@@ -709,6 +710,7 @@ footer p {
 footer p a{
 	font-size: 16px;
 	color:#f1e8db;
+	text-decoration: none;
 }
 footer a:hover{
 	color:#f1e8db;
