@@ -21,7 +21,6 @@ header{
 
 /* 設定選單文字的基本樣式 */
 .navbar-nav .nav-link {
-	/* background-color: transparent !important; */
 	color: #96543b !important;  /* 設定預設的文字顏色為深藍*/
 	font-weight: 500;			  /* 讓字體稍為粗一點 */
 	padding: 8px 16px;			  /* 增加文字週圍的空間，那滑鼠移上去時不會太扁 */
@@ -135,26 +134,11 @@ header {
 }
 
 .intro-text {
-    font-size: 16px;
-    margin-bottom: auto; /* 將價格推到底部 */
-}
-
-.price-section {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.price-label {
-	background-color: #ca4d3f;
-	border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
     font-size: 18px;
-    color: #f1e8db;
-    font-weight: bold;
-    margin-left: 10;
+    
 }
+
+
 /* 官方帳號按鈕 */
 .cta-btn-green {
             background: linear-gradient(135deg, #00B900 0%, #2E7D32 100%);
@@ -535,7 +519,6 @@ header {
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
       padding: 2.5rem;
-      margin-top: 2rem;
       margin-bottom: 3rem;
     }
     .form-label { font-weight: bold; color: #4a6c65; }
@@ -615,7 +598,7 @@ p.lead{
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
     padding: 0px;
     /* 將 margin 修改為：上 30px、左右 3px、下 0px */
-    margin: 30px 3px 0px !important; 
+    margin: 30px 3px 0px; 
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -655,7 +638,6 @@ p.lead{
 #latest .col-md-4 .outer{
 	box-shadow: 0 0 8px 0 rgba(0,0,0,0.08);
 	padding: 0px;
-	margin: 0 3px;
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -702,7 +684,7 @@ footer ul{
 footer ul a{
 	font-size: 16px;
 	color: #f1e8db;
-	text-decoration: none;
+    text-decoration: none;
 }
 footer p {
 	color:#f1e8db;
@@ -710,7 +692,7 @@ footer p {
 footer p a{
 	font-size: 16px;
 	color:#f1e8db;
-	text-decoration: none;
+    text-decoration: none;
 }
 footer a:hover{
 	color:#f1e8db;
