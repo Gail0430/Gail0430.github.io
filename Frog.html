@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>青蛙來了｜飲品品牌網站範例</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Noto Sans TC',sans-serif;
+      background:#fff8f2;
+      color:#5b4636;
+      line-height:1.8;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1200px,90%);
+      margin:auto;
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      min-height:100vh;
+      background:linear-gradient(rgba(255,248,242,.75),rgba(255,248,242,.8)),
+      url('FrogTea.jpg') center/cover;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-content{
+      max-width:650px;
+      background:rgba(255,255,255,.7);
+      backdrop-filter:blur(5px);
+      padding:50px;
+      border-radius:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .hero small{
+      color:#ca8d58;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+
+    .hero h1{
+      font-size:4rem;
+      color:#9a5c32;
+      margin:10px 0 20px;
+      line-height:1.2;
+    }
+
+    .hero p{
+      font-size:1.1rem;
+      color:#6b5544;
+      margin-bottom:30px;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .btn-primary{
+      background:#ca8d58;
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#b67843;
+    }
+
+    .btn-outline{
+      border:2px solid #ca8d58;
+      color:#ca8d58;
+    }
+
+    .btn-outline:hover{
+      background:#ca8d58;
+      color:white;
+    }
+
+    /* ===== section ===== */
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:2.5rem;
+      color:#9a5c32;
+      margin-bottom:12px;
+    }
+
+    .section-title p{
+      color:#8b7768;
+    }
+
+    /* ===== about ===== */
+    .about-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:40px;
+      align-items:center;
+    }
+
+    .about-card{
+      background:white;
+      border-radius:24px;
+      padding:40px;
+      box-shadow:0 10px 25px rgba(0,0,0,.05);
+    }
+
+    .about-card h3{
+      color:#c1773e;
+      margin-bottom:16px;
+      font-size:1.5rem;
+    }
+
+    /* ===== feature ===== */
+    .feature-wrap{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .feature-card{
+      background:#fff;
+      border-radius:20px;
+      padding:35px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.05);
+      transition:.3s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .feature-card h4{
+      margin:20px 0 10px;
+      color:#9a5c32;
+      font-size:1.3rem;
+    }
+
+    .icon{
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      background:#fde6d1;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+    }
+
+    /* ===== pricing ===== */
+    .pricing{
+      background:#fff3e8;
+    }
+
+    .price-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:30px;
+    }
+
+    .price-card{
+      background:white;
+      border-radius:24px;
+      padding:40px 32px;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .price-card.popular{
+      border:3px solid #ca8d58;
+      transform:scale(1.03);
+    }
+
+    .tag{
+      position:absolute;
+      top:16px;
+      right:-40px;
+      background:#ca8d58;
+      color:white;
+      width:160px;
+      text-align:center;
+      transform:rotate(35deg);
+      font-size:.9rem;
+      padding:4px 0;
+    }
+
+    .price-card h3{
+      color:#9a5c32;
+      font-size:1.8rem;
+      margin-bottom:10px;
+    }
+
+    .price{
+      font-size:2.2rem;
+      color:#ca8d58;
+      font-weight:700;
+      margin:20px 0;
+    }
+
+    .price-card ul{
+      list-style:none;
+      margin:24px 0;
+    }
+
+    .price-card ul li{
+      margin-bottom:12px;
+      border-bottom:1px dashed #eee;
+      padding-bottom:10px;
+    }
+
+    /* ===== process ===== */
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .process-card{
+      background:white;
+      border-radius:20px;
+      padding:30px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.05);
+    }
+
+    .step{
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      background:#ca8d58;
+      color:white;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      margin-bottom:18px;
+    }
+
+    /* ===== contact ===== */
+    .contact{
+      background:linear-gradient(135deg,#ca8d58,#e3b17d);
+      color:white;
+      text-align:center;
+    }
+
+    .contact h2{
+      font-size:2.5rem;
+      margin-bottom:20px;
+    }
+
+    .contact p{
+      margin-bottom:30px;
+      font-size:1.1rem;
+    }
+
+    .contact .btn-primary{
+      background:white;
+      color:#ca8d58;
+    }
+
+    footer{
+      background:#7c5739;
+      color:#f5e9dd;
+      text-align:center;
+      padding:24px;
+      font-size:.95rem;
+    }
+
+    /* ===== RWD ===== */
+    @media(max-width:992px){
+
+      .about-grid,
+      .feature-wrap,
+      .price-grid,
+      .process-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:2.8rem;
+      }
+
+      .hero-content{
+        padding:36px;
+      }
+
+      .price-card.popular{
+        transform:none;
+      }
+    }
+
+    @media(max-width:576px){
+
+      .hero{
+        padding:80px 0;
+      }
+
+      .hero h1{
+        font-size:2.2rem;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+
+      .hero-content{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <small>FROG COMING 青蛙來了</small>
+        <h1>茶飲品牌形象網站</h1>
+        <p>
+          使用暖色系與飲品視覺，打造具有品牌溫度的一頁式網站。
+          結合 LINE 官方帳號、Google 表單與 GitHub 靜態網站，
+          協助店家快速建立線上曝光與顧客互動。
+        </p>
+
+        <div class="hero-btns">
+          <a href="#pricing" class="btn btn-primary">查看方案</a>
+          <a href="#contact" class="btn btn-outline">立即洽詢</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>品牌網站規劃</h2>
+        <p>以飲料店品牌視覺為核心的一頁式網站設計</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>視覺風格分析</h3>
+          <p>
+            此菜單以奶茶色、焦糖色、米白色為主視覺，
+            搭配柔和漸層與圓角設計，呈現溫暖、親切與清爽感。
+            網頁延伸相同色調，讓品牌風格保持一致。
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>網站功能規劃</h3>
+          <p>
+            提供品牌介紹、熱門飲品、菜單展示、活動資訊、
+            Google 表單預訂、LINE 官方帳號導流等功能，
+            適合飲料店、小型品牌與個人工作室使用。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>網站特色</h2>
+        <p>簡單、清楚、快速上線</p>
+      </div>
+
+      <div class="feature-wrap">
+
+        <div class="feature-card">
+          <div class="icon">🎨</div>
+          <h4>品牌視覺設計</h4>
+          <p>
+            延伸品牌色彩與菜單風格，
+            建立一致性的品牌形象。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">📱</div>
+          <h4>手機 RWD 響應式</h4>
+          <p>
+            支援手機、平板與電腦，
+            提供良好的瀏覽體驗。
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">💬</div>
+          <h4>LINE 導流整合</h4>
+          <p>
+            串接 LINE 官方帳號，
+            提升顧客互動與回購率。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>網站方案價格</h2>
+        <p>依照店家需求提供不同等級方案</p>
+      </div>
+
+      <div class="price-grid">
+
+        <div class="price-card">
+          <h3>方案一</h3>
+          <p>LINE 官方帳號建置</p>
+          <div class="price">NT$5,000 - 8,000</div>
+
+          <ul>
+            <li>LINE 官方帳號建立</li>
+            <li>基本選單設定</li>
+            <li>歡迎訊息設定</li>
+            <li>品牌封面設計</li>
+            <li>基礎導流規劃</li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary">立即詢問</a>
+        </div>
+
+        <div class="price-card popular">
+          <div class="tag">熱門方案</div>
+
+          <h3>方案二</h3>
+          <p>GitHub × Google 表單網站</p>
+          <div class="price">NT$12,000 - 15,000</div>
+
+          <ul>
+            <li>一頁至三頁網站</li>
+            <li>RWD 響應式設計</li>
+            <li>Google 表單整合</li>
+            <li>GitHub 免費部署</li>
+            <li>品牌風格設計</li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary">立即詢問</a>
+        </div>
+
+        <div class="price-card">
+          <h3>方案三</h3>
+          <p>網站 × LINE × 表單整合</p>
+          <div class="price">NT$18,000 - 20,000</div>
+
+          <ul>
+            <li>三頁至五頁網站</li>
+            <li>LINE 官方帳號整合</li>
+            <li>Google 表單串接</li>
+            <li>GitHub 網站部署</li>
+            <li>品牌活動導流規劃</li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary">立即詢問</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <h2>合作流程</h2>
+        <p>簡單四步驟快速完成</p>
+      </div>
+
+      <div class="process-grid">
+
+        <div class="process-card">
+          <div class="step">01</div>
+          <h4>需求討論</h4>
+          <p>了解品牌需求與網站方向</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">02</div>
+          <h4>版型設計</h4>
+          <p>依品牌風格進行視覺設計</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">03</div>
+          <h4>網站製作</h4>
+          <p>完成 RWD 響應式網站開發</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">04</div>
+          <h4>正式上線</h4>
+          <p>網站部署與後續教學</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>打造您的品牌網站</h2>
+      <p>
+        適合飲料店、工作室、個人品牌與在地商家。
+      </p>
+
+      <a href="#" class="btn btn-primary">加入 LINE 官方帳號</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Frog Coming Web Design Demo ｜ 品牌網站範例
+  </footer>
+
+</body>
+</html>
