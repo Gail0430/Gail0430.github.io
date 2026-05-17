@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>青蛙來了 FROG COMING｜飲品菜單</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <style>
+    /* ===== CSS 變數 ===== */
+    :root {
+      --orange:        #E8721A;
+      --orange-dark:   #C45A0A;
+      --orange-light:  #F5A45D;
+      --brown:         #7B4A1E;
+      --brown-dark:    #5A3410;
+      --cream:         #FDF5E6;
+      --cream-dark:    #F5E8CC;
+      --tan:           #D4A96A;
+      --tan-light:     #EDD5A0;
+      --green:         #5A8A3C;
+      --green-light:   #8AB870;
+      --text-dark:     #2D1A08;
+      --text-mid:      #5A3D1A;
+      --text-light:    #8B6040;
+      --white:         #FFFFFF;
+      --shadow:        rgba(120, 70, 20, 0.18);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown) 50%, var(--orange-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 48px 20px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .header-inner { position: relative; z-index: 1; }
+    .logo-wrap { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 10px; }
+    .frog-icon {
+      width: 72px; height: 72px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.4rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      border: 3px solid var(--tan-light);
+    }
+    .brand-text { text-align: left; }
+    .brand-en {
+      font-size: 1rem; letter-spacing: 4px; font-weight: 600;
+      color: var(--tan-light); text-transform: uppercase; margin-bottom: 2px;
+    }
+    .brand-zh { font-size: 2.2rem; font-weight: 900; letter-spacing: 2px; }
+    .header-tagline {
+      font-size: 0.9rem; color: var(--tan-light);
+      letter-spacing: 1.5px; margin-top: 6px; font-weight: 300;
+    }
+    .promo-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+      color: var(--white);
+      padding: 7px 22px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-top: 16px;
+      letter-spacing: 2px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      background: var(--brown);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 3px 12px var(--shadow);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0;
+    }
+    nav a {
+      color: var(--tan-light);
+      text-decoration: none;
+      padding: 12px 18px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      display: flex; align-items: center; gap: 6px;
+      white-space: nowrap;
+    }
+    nav a:hover { background: var(--orange); color: var(--white); }
+
+    /* ===== MAIN ===== */
+    main { max-width: 1100px; margin: 0 auto; padding: 32px 16px 60px; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      display: flex; align-items: center; gap: 14px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px var(--shadow);
+    }
+    .section-title h2 { font-size: 1.25rem; font-weight: 900; letter-spacing: 2px; }
+    .section-title .sub { font-size: 0.78rem; font-weight: 400; color: rgba(255,255,255,0.85); margin-top: 2px; }
+    .section-title .badge {
+      margin-left: auto;
+      background: rgba(255,255,255,0.2);
+      font-size: 0.72rem; padding: 3px 10px;
+      border-radius: 20px; white-space: nowrap;
+    }
+    .section-icon { font-size: 1.4rem; }
+
+    /* ===== CATEGORY SECTION ===== */
+    .category-section { margin-bottom: 40px; }
+
+    /* ===== MENU GRID ===== */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .menu-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px var(--shadow);
+      border-left: 4px solid var(--orange);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .menu-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+    .menu-card .item-name {
+      font-size: 0.98rem; font-weight: 700;
+      color: var(--text-dark); margin-bottom: 8px;
+    }
+    .menu-card .price-row {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .price-tag {
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--cream-dark);
+      border-radius: 8px; padding: 4px 10px;
+      min-width: 48px;
+    }
+    .price-tag .size { font-size: 0.7rem; color: var(--text-light); font-weight: 600; }
+    .price-tag .amount { font-size: 1rem; font-weight: 800; color: var(--orange-dark); }
+    .menu-card .item-note {
+      font-size: 0.72rem; color: var(--text-light); margin-top: 6px;
+    }
+    .no-caffeine-badge {
+      position: absolute; top: 10px; right: 10px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.62rem; padding: 2px 8px;
+      border-radius: 20px; font-weight: 600;
+    }
+
+    /* ===== TOPPINGS ===== */
+    .toppings-section { margin-bottom: 40px; }
+    .toppings-grid {
+      display: flex; flex-wrap: wrap; gap: 12px;
+    }
+    .topping-chip {
+      background: var(--white);
+      border: 2px solid var(--tan);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.9rem; font-weight: 600;
+      color: var(--brown);
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 2px 6px var(--shadow);
+      transition: background 0.2s, color 0.2s;
+    }
+    .topping-chip:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+    .topping-chip .t-price { color: var(--orange-dark); font-weight: 800; }
+    .topping-chip:hover .t-price { color: var(--white); }
+
+    /* ===== CUSTOMIZATION ===== */
+    .custom-section { margin-bottom: 40px; }
+    .custom-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .custom-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+    .custom-card h3 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--brown); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .option-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .option-pill {
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600;
+      background: var(--cream-dark);
+      color: var(--text-mid);
+    }
+    .option-pill.recommended {
+      background: var(--orange); color: var(--white);
+    }
+
+    /* ===== STORE INFO ===== */
+    .store-section { margin-bottom: 40px; }
+    .store-card {
+      background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+      color: var(--white);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex; flex-wrap: wrap; gap: 24px;
+      align-items: center;
+      box-shadow: 0 4px 16px var(--shadow);
+    }
+    .store-info-block { flex: 1; min-width: 200px; }
+    .store-info-block h3 {
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--tan-light); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .store-info-block p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.85);
+      display: flex; align-items: center; gap: 8px; margin-bottom: 6px;
+    }
+    .store-info-block a { color: var(--orange-light); text-decoration: none; }
+    .promo-box {
+      background: var(--orange);
+      border-radius: 12px;
+      padding: 18px 24px;
+      text-align: center;
+      min-width: 160px;
+    }
+    .promo-box .promo-label { font-size: 0.78rem; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
+    .promo-box .promo-text { font-size: 1.4rem; font-weight: 900; }
+    .promo-box .promo-note { font-size: 0.72rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--tan), transparent);
+      margin: 10px 0 32px;
+    }
+
+    /* ===== PRICING PLANS ===== */
+    .plans-section { margin-bottom: 40px; }
+    .plans-header {
+      text-align: center; margin-bottom: 28px;
+    }
+    .plans-header h2 {
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--brown); letter-spacing: 2px;
+    }
+    .plans-header p { color: var(--text-light); margin-top: 6px; font-size: 0.95rem; }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .plan-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 28px 24px 24px;
+      box-shadow: 0 4px 20px var(--shadow);
+      text-align: center;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 32px var(--shadow);
+    }
+    .plan-card.featured {
+      background: linear-gradient(160deg, var(--brown-dark) 0%, var(--brown) 100%);
+      color: var(--white);
+      border: 3px solid var(--orange);
+    }
+    .plan-card.featured .plan-price,
+    .plan-card.featured .plan-name { color: var(--white); }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.8); }
+    .plan-card.featured .plan-feature { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.15); }
+    .plan-card.featured .plan-feature i { color: var(--orange-light); }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.78rem; font-weight: 700;
+      padding: 5px 20px; border-radius: 50px;
+      white-space: nowrap;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .plan-icon {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .plan-card.featured .plan-icon {
+      background: linear-gradient(135deg, var(--orange), var(--tan));
+    }
+    .plan-name {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--brown); margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+    .plan-desc {
+      font-size: 0.82rem; color: var(--text-light);
+      margin-bottom: 16px; line-height: 1.5;
+    }
+    .plan-price {
+      font-size: 2rem; font-weight: 900;
+      color: var(--orange-dark);
+      margin-bottom: 4px;
+    }
+    .plan-price span { font-size: 1rem; font-weight: 600; }
+    .plan-range {
+      font-size: 0.8rem; color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    .plan-card.featured .plan-range { color: rgba(255,255,255,0.65); }
+    .plan-features { flex: 1; text-align: left; margin-bottom: 20px; }
+    .plan-feature {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 0.88rem;
+      color: var(--text-mid);
+    }
+    .plan-feature:last-child { border-bottom: none; }
+    .plan-feature i { color: var(--orange); margin-top: 2px; flex-shrink: 0; }
+    .plan-cta {
+      display: block;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+      color: var(--white);
+      text-decoration: none;
+      padding: 13px 20px;
+      border-radius: 50px;
+      font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      transition: opacity 0.2s, transform 0.2s;
+      border: none; cursor: pointer; width: 100%;
+    }
+    .plan-cta:hover { opacity: 0.88; transform: scale(1.02); }
+    .plan-card.featured .plan-cta {
+      background: linear-gradient(90deg, var(--orange), var(--tan));
+    }
+    .plans-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.83rem;
+      color: var(--text-light);
+    }
+    .plans-note i { color: var(--orange); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.85rem;
+    }
+    footer .footer-logo {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--tan-light); margin-bottom: 6px;
+    }
+    footer a { color: var(--orange-light); text-decoration: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .brand-zh { font-size: 1.7rem; }
+      .custom-grid { grid-template-columns: 1fr; }
+      nav a { padding: 10px 12px; font-size: 0.8rem; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .section-title h2 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div class="frog-icon">🐸</div>
+      <div class="brand-text">
+        <div class="brand-en">FROG COMING</div>
+        <div class="brand-zh">青蛙來了</div>
+      </div>
+    </div>
+    <p class="header-tagline">茶有香香，果有真味｜細膩萃飲，特色不比尋常</p>
+    <div class="promo-badge">🎉 來店買五送一</div>
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav aria-label="菜單導覽">
+  <div class="nav-inner">
+    <a href="#xin-fen-yuan"><i class="fa-solid fa-circle-dot"></i>紅心粉圓</a>
+    <a href="#sang-ai-yu"><i class="fa-solid fa-leaf"></i>桑椹愛玉</a>
+    <a href="#wa-tea"><i class="fa-solid fa-mug-hot"></i>蛙系好茶</a>
+    <a href="#fruit-tea"><i class="fa-solid fa-lemon"></i>果感好茶</a>
+    <a href="#ai-yu"><i class="fa-solid fa-droplet"></i>原鄉愛玉</a>
+    <a href="#light-fruit"><i class="fa-solid fa-seedling"></i>果感輕盈</a>
+    <a href="#milk"><i class="fa-solid fa-bottle-droplet"></i>醇奶香濃</a>
+    <a href="#toppings"><i class="fa-solid fa-plus"></i>加分好料</a>
+    <a href="#plans"><i class="fa-solid fa-star"></i>網站方案</a>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+  <!-- 紅心粉圓 -->
+  <section class="category-section" id="xin-fen-yuan">
+    <div class="section-title">
+      <span class="section-icon">⭕</span>
+      <div>
+        <h2>紅心粉圓</h2>
+        <p class="sub">歌Q有勁動・粉圓控必點</p>
+      </div>
+      <span class="badge">無咖啡因</span>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card">
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-name">黑糖呀呀粉圓</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">40</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+        </div>
+        <div class="item-note">熱飲</div>
+      </article>
+      <article class="menu-card">
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-name">黑糖粉圓鮮奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">80</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-name">黑糖粉圓仙草鮮奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">80</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-name">黑糖粉圓布丁鮮奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">80</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-name">芋泥圓圓鮮奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">85</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 桑椹愛玉 -->
+  <section class="category-section" id="sang-ai-yu">
+    <div class="section-title" style="background: linear-gradient(90deg, #8B4F9B, #B07CC0);">
+      <span class="section-icon">🍇</span>
+      <div>
+        <h2>桑椹愛玉</h2>
+        <p class="sub">精選桑椹特調</p>
+      </div>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card" style="border-left-color: #8B4F9B;">
+        <div class="item-name">桑椹愛玉</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #8B4F9B;">
+        <div class="item-name">檸檬愛玉</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">50</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #8B4F9B;">
+        <div class="item-name">三顆布丁冰沙</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">85</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 蛙系好茶 -->
+  <section class="category-section" id="wa-tea">
+    <div class="section-title" style="background: linear-gradient(90deg, #5A8A3C, #8AB870);">
+      <span class="section-icon">🍵</span>
+      <div>
+        <h2>蛙系好茶</h2>
+        <p class="sub">迷人茶香四溢</p>
+      </div>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">蜜香紅茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">四季春青茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">茉香綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">鹿野紅烏龍</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">45</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">杉火烏龍</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">冬瓜茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #5A8A3C;">
+        <div class="item-name">粉圓紅茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">45</span></div>
+        </div>
+        <div class="item-note">可選：青茶／烏龍／冬瓜</div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 果感好茶 -->
+  <section class="category-section" id="fruit-tea">
+    <div class="section-title" style="background: linear-gradient(90deg, #D4830A, #F0A840);">
+      <span class="section-icon">🍋</span>
+      <div>
+        <h2>果感好茶</h2>
+        <p class="sub">果然最新鮮</p>
+      </div>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">蜂蜜綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">45</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">多多綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">青梅果醋綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">百香綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">柳橙綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">百香柳橙綠茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #D4830A;">
+        <div class="item-name">番香紅烏龍</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">72</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 原鄉愛玉 -->
+  <section class="category-section" id="ai-yu">
+    <div class="section-title" style="background: linear-gradient(90deg, #3D8C6E, #62B894);">
+      <span class="section-icon">💎</span>
+      <div>
+        <h2>原鄉愛玉</h2>
+        <p class="sub">高山原鄉愛玉</p>
+      </div>
+      <span class="badge">無咖啡因</span>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card" style="border-left-color: #3D8C6E;">
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-name">愛玉粉圓</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">45</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #3D8C6E;">
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-name">愛玉檸檬</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">50</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #3D8C6E;">
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-name">愛玉檸檬粉圓</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">55</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #3D8C6E;">
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-name">桑葚愛玉</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #3D8C6E;">
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-name">百香愛玉</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #3D8C6E;">
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-name">愛玉仙草</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">45</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 果感輕盈 -->
+  <section class="category-section" id="light-fruit">
+    <div class="section-title" style="background: linear-gradient(90deg, #C4A020, #E0C050);">
+      <span class="section-icon">🍈</span>
+      <div>
+        <h2>果感輕盈</h2>
+        <p class="sub">果然最新鮮</p>
+      </div>
+      <span class="badge">無咖啡因</span>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card" style="border-left-color: #C4A020;">
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-name">蜂蜜檸檬汁</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">45</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #C4A020;">
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-name">冬瓜檸檬</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #C4A020;">
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-name">愛玉青梅冬瓜</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #C4A020;">
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-name">蜂蜜檸檬蘆薈</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-left-color: #C4A020;">
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-name">蜂蜜蘆薈粉圓</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 醇奶香濃 -->
+  <section class="category-section" id="milk">
+    <div class="section-title">
+      <span class="section-icon">🥛</span>
+      <div>
+        <h2>醇奶香濃</h2>
+        <p class="sub">淬乳至鮮醇香</p>
+      </div>
+    </div>
+    <div class="menu-grid">
+      <article class="menu-card">
+        <div class="item-name">蜜香奶茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        </div>
+        <div class="item-note">奶蓋系列</div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">茉莉奶綠</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        </div>
+        <div class="item-note">奶蓋系列</div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">杉火烏龍奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        </div>
+        <div class="item-note">奶蓋系列</div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">粉圓奶茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+        </div>
+        <div class="item-note">奶蓋系列</div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">鮮奶紅烏龍</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">蜜香鮮奶茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">茉莉鮮奶綠</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">杉火烏龍鮮奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">粉圓鮮奶茶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">70</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        </div>
+      </article>
+      <article class="menu-card">
+        <div class="item-name">黑糖鮮奶</div>
+        <div class="price-row">
+          <div class="price-tag"><span class="size">M</span><span class="amount">70</span></div>
+          <div class="price-tag"><span class="size">L</span><span class="amount">85</span></div>
+        </div>
+        <div class="item-note">全糖系</div>
+      </article>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 加分好料 -->
+  <section class="toppings-section" id="toppings">
+    <div class="section-title" style="background: linear-gradient(90deg, #6A4E2A, #9A7040);">
+      <span class="section-icon">➕</span>
+      <div>
+        <h2>加分好料</h2>
+        <p class="sub">讓飲品更豐富</p>
+      </div>
+    </div>
+    <div class="toppings-grid">
+      <div class="topping-chip">🔴 粉圓 <span class="t-price">＋$10</span></div>
+      <div class="topping-chip">💚 愛玉 <span class="t-price">＋$15</span></div>
+      <div class="topping-chip">🌿 蘆薈 <span class="t-price">＋$20</span></div>
+      <div class="topping-chip">⚫ 仙草 <span class="t-price">＋$10</span></div>
+      <div class="topping-chip">🟡 椰果 <span class="t-price">＋$15</span></div>
+      <div class="topping-chip">🟠 布丁 <span class="t-price">＋$15</span></div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 客製化 -->
+  <section class="custom-section">
+    <div class="section-title" style="background: linear-gradient(90deg, #4A4A6A, #7070A0);">
+      <span class="section-icon">⚙️</span>
+      <div>
+        <h2>客製化選項</h2>
+        <p class="sub">依照喜好調整</p>
+      </div>
+    </div>
+    <div class="custom-grid">
+      <div class="custom-card">
+        <h3><i class="fa-solid fa-candy-cane" style="color:var(--orange);"></i>甜度選擇</h3>
+        <div class="option-pills">
+          <span class="option-pill recommended">正常糖 100%</span>
+          <span class="option-pill">半糖 50%</span>
+          <span class="option-pill">微糖 30%</span>
+          <span class="option-pill">無糖 0%</span>
+        </div>
+      </div>
+      <div class="custom-card">
+        <h3><i class="fa-solid fa-snowflake" style="color:#5599CC;"></i>冰量選擇</h3>
+        <div class="option-pills">
+          <span class="option-pill recommended">正常冰 100%</span>
+          <span class="option-pill">少冰 50%</span>
+          <span class="option-pill">去冰 10%</span>
+          <span class="option-pill">熱飲 50~60°C</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- 店家資訊 -->
+  <section class="store-section">
+    <div class="section-title">
+      <span class="section-icon">📍</span>
+      <div>
+        <h2>門市資訊</h2>
+        <p class="sub">歡迎親臨選購</p>
+      </div>
+    </div>
+    <div class="store-card">
+      <div class="store-info-block">
+        <h3><i class="fa-solid fa-store"></i> 永和店</h3>
+        <p><i class="fa-solid fa-location-dot"></i> 新北市永和區中和路613號</p>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:0289211507">02-8921-1507</a></p>
+        <p><i class="fa-solid fa-clock"></i> 請電洽詢問營業時間</p>
+      </div>
+      <div class="promo-box">
+        <div class="promo-label">門市優惠</div>
+        <div class="promo-text">🎉 買五送一</div>
+        <div class="promo-note">熱飲・本店招牌適用</div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- ===== 網站方案 ===== -->
+  <section class="plans-section" id="plans">
+    <div class="plans-header">
+      <h2>🌐 網站建置方案</h2>
+      <p>專為餐飲店、小型商家量身打造，讓您的品牌在網路上發光</p>
+    </div>
+    <div class="plans-grid">
+
+      <!-- 方案一 -->
+      <div class="plan-card">
+        <div class="plan-icon">💬</div>
+        <div class="plan-name">方案一｜Line 官方帳號</div>
+        <div class="plan-desc">快速建立品牌通訊管道，與顧客一對一溝通</div>
+        <div class="plan-price"><span>NT$</span>5,000 <span>起</span></div>
+        <div class="plan-range">專案價：NT$5,000 – 8,000 元</div>
+        <ul class="plan-features">
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>Line 官方帳號申請與設定</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>品牌主圖 / 封面圖設計</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>自動回覆訊息設定</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>基本選單按鈕設定</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>教學指導使用</li>
+        </ul>
+        <button class="plan-cta" onclick="alert('請聯繫我們了解詳細報價！')">立即諮詢</button>
+      </div>
+
+      <!-- 方案二（主推） -->
+      <div class="plan-card">
+        <div class="plan-icon">🌐</div>
+        <div class="plan-name">方案二｜GitHub × Google 表單</div>
+        <div class="plan-desc">一至三頁專業網站，結合線上表單，快速收集訂單</div>
+        <div class="plan-price"><span>NT$</span>12,000 <span>起</span></div>
+        <div class="plan-range">專案價：NT$12,000 – 15,000 元</div>
+        <ul class="plan-features">
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>一至三頁響應式網站設計</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>GitHub Pages 免費主機部署</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>Google 表單訂購 / 預約整合</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>菜單頁面設計（含圖片）</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>RWD 手機版優化</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>SEO 基本設定</li>
+        </ul>
+        <button class="plan-cta" onclick="alert('請聯繫我們了解詳細報價！')">立即諮詢</button>
+      </div>
+
+      <!-- 方案三 -->
+      <div class="plan-card featured">
+        <div class="popular-badge">🔥 最受歡迎</div>
+        <div class="plan-icon">🚀</div>
+        <div class="plan-name">方案三｜完整整合方案</div>
+        <div class="plan-desc">GitHub × Google 表單 × Line 官方帳號，全方位數位行銷</div>
+        <div class="plan-price"><span>NT$</span>18,000 <span>起</span></div>
+        <div class="plan-range">專案價：NT$18,000 – 20,000 元</div>
+        <ul class="plan-features">
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>三至五頁完整品牌網站</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>GitHub Pages 部署 + 自訂網域</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>Google 表單訂購 / 預約整合</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>Line 官方帳號完整設定</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>Line × 網站串聯導流</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>Google 我的商家設定</li>
+          <li class="plan-feature"><i class="fa-solid fa-check"></i>一個月售後支援</li>
+        </ul>
+        <button class="plan-cta" onclick="alert('請聯繫我們了解詳細報價！')">立即諮詢</button>
+      </div>
+
+    </div>
+    <p class="plans-note">
+      <i class="fa-solid fa-info-circle"></i>
+      以上方案均提供商業授權，成品版權歸業主所有。實際報價視需求調整，歡迎免費諮詢。
+    </p>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-logo">🐸 FROG COMING 青蛙來了</div>
+  <p>新北市永和區中和路613號｜<a href="tel:0289211507">02-8921-1507</a></p>
+  <p style="margin-top:10px; font-size:0.78rem; opacity:0.6;">此網頁為品牌網站範例｜版權所有 © EAR Web Design</p>
+</footer>
+
+<script>
+  // Sticky nav active highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.background = '';
+      a.style.color = '';
+      if (a.getAttribute('href') === '#' + current) {
+        a.style.background = 'var(--orange)';
+        a.style.color = '#fff';
+      }
+    });
+  });
+</script>
+</body>
+</html>
