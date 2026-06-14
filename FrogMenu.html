@@ -144,46 +144,77 @@
     /* ===== MENU GRID ===== */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
     }
     .menu-card {
       background: var(--white);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 2px 8px var(--shadow);
-      border-left: 4px solid var(--orange);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px var(--shadow);
+      border: 1px solid var(--cream-dark);
+      border-top: 4px solid var(--orange);
       transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
     .menu-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px var(--shadow);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 22px var(--shadow);
+    }
+    /* 縮圖預留區 */
+    .item-thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--tan-light) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+    .item-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .item-thumb .thumb-placeholder {
+      font-size: 2.4rem;
+      opacity: 0.55;
+    }
+    .item-thumb .thumb-label {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    /* 卡片文字區 */
+    .item-body {
+      padding: 12px 14px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
     .menu-card .item-name {
-      font-size: 0.98rem; font-weight: 700;
-      color: var(--text-dark); margin-bottom: 8px;
+      font-size: 0.95rem; font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.4;
     }
-    .menu-card .price-row {
-      display: flex; gap: 10px; flex-wrap: wrap;
-    }
-    .price-tag {
-      display: flex; flex-direction: column; align-items: center;
-      background: var(--cream-dark);
-      border-radius: 8px; padding: 4px 10px;
-      min-width: 48px;
-    }
-    .price-tag .size { font-size: 0.7rem; color: var(--text-light); font-weight: 600; }
-    .price-tag .amount { font-size: 1rem; font-weight: 800; color: var(--orange-dark); }
     .menu-card .item-note {
-      font-size: 0.72rem; color: var(--text-light); margin-top: 6px;
+      font-size: 0.72rem; color: var(--text-light);
+      margin-top: auto;
     }
     .no-caffeine-badge {
-      position: absolute; top: 10px; right: 10px;
+      position: absolute; top: 8px; right: 8px;
       background: var(--green);
       color: var(--white);
-      font-size: 0.62rem; padding: 2px 8px;
-      border-radius: 20px; font-weight: 600;
+      font-size: 0.58rem; padding: 2px 7px;
+      border-radius: 20px; font-weight: 700;
+      letter-spacing: 0.5px;
     }
 
     /* ===== TOPPINGS ===== */
@@ -459,43 +490,61 @@
       <span class="badge">無咖啡因</span>
     </div>
     <div class="menu-grid">
-      <article class="menu-card">
-        <div class="item-name">黑糖呀呀粉圓</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">40</span></div>
+      <article class="menu-card" style="border-top-color: var(--orange);">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🧋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
-        <div class="item-note">熱飲</div>
-      </article>
-      <article class="menu-card">
-        <div class="item-name">黑糖粉圓鮮奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">80</span></div>
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-body">
+          <div class="item-name">黑糖呀呀粉圓</div>
+          <div class="item-note">熱飲</div>
         </div>
       </article>
-      <article class="menu-card">
-        <div class="item-name">黑糖粉圓仙草鮮奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">80</span></div>
+      <article class="menu-card" style="border-top-color: var(--orange);">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🧋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-body">
+          <div class="item-name">黑糖粉圓鮮奶</div>
         </div>
       </article>
-      <article class="menu-card">
-        <div class="item-name">黑糖粉圓布丁鮮奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">65</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">80</span></div>
+      <article class="menu-card" style="border-top-color: var(--orange);">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🧋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-body">
+          <div class="item-name">黑糖粉圓仙草鮮奶</div>
         </div>
       </article>
-      <article class="menu-card">
-        <div class="item-name">芋泥圓圓鮮奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">85</span></div>
+      <article class="menu-card" style="border-top-color: var(--orange);">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🧋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-body">
+          <div class="item-name">黑糖粉圓布丁鮮奶</div>
+        </div>
+      </article>
+      <article class="menu-card" style="border-top-color: var(--orange);">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🧋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="no-caffeine-badge">無咖啡因</div>
+        <div class="item-body">
+          <div class="item-name">芋泥圓圓鮮奶</div>
         </div>
       </article>
     </div>
   </section>
   <div class="divider"></div>
+
   <!-- 桑椹愛玉 -->
   <section class="category-section" id="sang-ai-yu">
     <div class="section-title" style="background: linear-gradient(90deg, #8B4F9B, #B07CC0);">
@@ -506,24 +555,31 @@
       </div>
     </div>
     <div class="menu-grid">
-      <article class="menu-card" style="border-left-color: #8B4F9B;">
-        <div class="item-name">桑椹愛玉</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #8B4F9B;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #F0E6F8, #D8B8E8);">
+          <span class="thumb-placeholder">🍇</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">桑椹愛玉</div>
         </div>
       </article>
-      <article class="menu-card" style="border-left-color: #8B4F9B;">
-        <div class="item-name">檸檬愛玉</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">50</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+      <article class="menu-card" style="border-top-color: #8B4F9B;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #F0E6F8, #D8B8E8);">
+          <span class="thumb-placeholder">🍋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">檸檬愛玉</div>
         </div>
       </article>
-      <article class="menu-card" style="border-left-color: #8B4F9B;">
-        <div class="item-name">三顆布丁冰沙</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">85</span></div>
+      <article class="menu-card" style="border-top-color: #8B4F9B;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #F0E6F8, #D8B8E8);">
+          <span class="thumb-placeholder">🧊</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">三顆布丁冰沙</div>
         </div>
       </article>
     </div>
@@ -540,48 +596,57 @@
       </div>
     </div>
     <div class="menu-grid">
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">蜜香紅茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">蜜香紅茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">四季春青茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">四季春青茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">茉香綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">茉香綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">鹿野紅烏龍</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">45</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">鹿野紅烏龍</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">杉火烏龍</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">杉火烏龍</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">冬瓜茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">40</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">冬瓜茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #5A8A3C;">
-        <div class="item-name">粉圓紅茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">45</span></div>
+      <article class="menu-card" style="border-top-color: #5A8A3C;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E8F5E0, #C8E8B0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
-        <div class="item-note">可選：青茶／烏龍／冬瓜</div>
+        <div class="item-body">
+          <div class="item-name">粉圓紅茶</div>
+          <div class="item-note">可選：青茶／烏龍／冬瓜</div>
+        </div>
       </article>
     </div>
   </section>
@@ -597,47 +662,54 @@
       </div>
     </div>
     <div class="menu-grid">
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">蜂蜜綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">45</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🍋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">蜂蜜綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">多多綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🫙</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">多多綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">青梅果釀綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🍈</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">青梅果醋綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">百香綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🌸</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">百香綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">柳橙綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🍊</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">柳橙綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">百香柳橙綠茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🍊</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">百香柳橙綠茶</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #D4830A;">
-        <div class="item-name">薈香紅烏龍</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">72</span></div>
+      <article class="menu-card" style="border-top-color: #D4830A;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFF5E0, #FFE0A0);">
+          <span class="thumb-placeholder">🍵</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">番香紅烏龍</div></div>
       </article>
     </div>
   </section>
@@ -654,49 +726,53 @@
       <span class="badge">無咖啡因</span>
     </div>
     <div class="menu-grid">
-      <article class="menu-card" style="border-left-color: #3D8C6E;">
-        
-        <div class="item-name">愛玉粉圓</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">45</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+      <article class="menu-card" style="border-top-color: #3D8C6E;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E0F5EE, #B0E0D0);">
+          <span class="thumb-placeholder">💎</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">愛玉粉圓</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #3D8C6E;">
-        
-        <div class="item-name">愛玉檸檬</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">50</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+      <article class="menu-card" style="border-top-color: #3D8C6E;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E0F5EE, #B0E0D0);">
+          <span class="thumb-placeholder">💎</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">愛玉檸檬</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #3D8C6E;">        
-        <div class="item-name">愛玉檸檬粉圓</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">55</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+      <article class="menu-card" style="border-top-color: #3D8C6E;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E0F5EE, #B0E0D0);">
+          <span class="thumb-placeholder">💎</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">愛玉檸檬粉圓</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #3D8C6E;">        
-        <div class="item-name">桑葚愛玉</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #3D8C6E;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E0F5EE, #B0E0D0);">
+          <span class="thumb-placeholder">🍇</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">桑葚愛玉</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #3D8C6E;">
-        <div class="item-name">百香愛玉</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #3D8C6E;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E0F5EE, #B0E0D0);">
+          <span class="thumb-placeholder">🌸</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">百香愛玉</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #3D8C6E;">       
-        <div class="item-name">愛玉仙草</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">45</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+      <article class="menu-card" style="border-top-color: #3D8C6E;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #E0F5EE, #B0E0D0);">
+          <span class="thumb-placeholder">⚫</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#3D8C6E;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">愛玉仙草</div></div>
       </article>
     </div>
   </section>
@@ -713,38 +789,45 @@
       <span class="badge">無咖啡因</span>
     </div>
     <div class="menu-grid">
-      <article class="menu-card" style="border-left-color: #C4A020;">
-        <div class="item-name">蜂蜜檸檬汁</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">45</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+      <article class="menu-card" style="border-top-color: #C4A020;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFFBE0, #FFF0A0);">
+          <span class="thumb-placeholder">🍋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">蜂蜜檸檬汁</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #C4A020;">
-        <div class="item-name">冬瓜檸檬</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
+      <article class="menu-card" style="border-top-color: #C4A020;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFFBE0, #FFF0A0);">
+          <span class="thumb-placeholder">🍋</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">冬瓜檸檬</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #C4A020;">
-        <div class="item-name">愛玉青梅冬瓜</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+      <article class="menu-card" style="border-top-color: #C4A020;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFFBE0, #FFF0A0);">
+          <span class="thumb-placeholder">🍈</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">愛玉青梅冬瓜</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #C4A020;">
-        <div class="item-name">蜂蜜檸檬蘆薈</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #C4A020;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFFBE0, #FFF0A0);">
+          <span class="thumb-placeholder">🌿</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">蜂蜜檸檬蘆薈</div></div>
       </article>
-      <article class="menu-card" style="border-left-color: #C4A020;">
-        <div class="item-name">蜂蜜蘆薈粉圓</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">60</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+      <article class="menu-card" style="border-top-color: #C4A020;">
+        <div class="item-thumb" style="background: linear-gradient(135deg, #FFFBE0, #FFF0A0);">
+          <span class="thumb-placeholder">🌿</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="no-caffeine-badge" style="background:#C4A020;">無咖啡因</div>
+        <div class="item-body"><div class="item-name">蜂蜜蘆薈粉圓</div></div>
       </article>
     </div>
   </section>
@@ -761,70 +844,89 @@
     </div>
     <div class="menu-grid">
       <article class="menu-card">
-        <div class="item-name">蜜香奶茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
-        <div class="item-note">奶蓋系列</div>
-      </article>
-      <article class="menu-card">
-        <div class="item-name">茉莉奶綠</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
-        </div>
-        <div class="item-note">奶蓋系列</div>
-      </article>
-      <article class="menu-card">
-        <div class="item-name">杉火烏龍奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">55</span></div>
-        </div>
-        <div class="item-note">奶蓋系列</div>
-      </article>
-      <article class="menu-card">
-        <div class="item-name">粉圓奶茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">60</span></div>
-        </div>
-        <div class="item-note">奶蓋系列</div>
-      </article>
-      <article class="menu-card">
-        <div class="item-name">鮮奶紅烏龍</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        <div class="item-body">
+          <div class="item-name">蜜香奶茶</div>
+          <div class="item-note">奶蓋系列</div>
         </div>
       </article>
       <article class="menu-card">
-        <div class="item-name">蜜香鮮奶茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">茉莉奶綠</div>
+          <div class="item-note">奶蓋系列</div>
         </div>
       </article>
       <article class="menu-card">
-        <div class="item-name">茉莉鮮奶綠</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">杉火烏龍奶</div>
+          <div class="item-note">奶蓋系列</div>
         </div>
       </article>
       <article class="menu-card">
-        <div class="item-name">杉火烏龍鮮奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">65</span></div>
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">粉圓奶茶</div>
+          <div class="item-note">奶蓋系列</div>
         </div>
       </article>
       <article class="menu-card">
-        <div class="item-name">粉圓鮮奶茶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">L</span><span class="amount">70</span></div>
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
+        <div class="item-body"><div class="item-name">鮮奶紅烏龍</div></div>
       </article>
       <article class="menu-card">
-        <div class="item-name">黑糖鮮奶</div>
-        <div class="price-row">
-          <div class="price-tag"><span class="size">M</span><span class="amount">70</span></div>
-          <div class="price-tag"><span class="size">L</span><span class="amount">85</span></div>
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
         </div>
-        <div class="item-note">全糖系</div>
+        <div class="item-body"><div class="item-name">蜜香鮮奶茶</div></div>
+      </article>
+      <article class="menu-card">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body"><div class="item-name">茉莉鮮奶綠</div></div>
+      </article>
+      <article class="menu-card">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body"><div class="item-name">杉火烏龍鮮奶</div></div>
+      </article>
+      <article class="menu-card">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body"><div class="item-name">粉圓鮮奶茶</div></div>
+      </article>
+      <article class="menu-card">
+        <div class="item-thumb">
+          <span class="thumb-placeholder">🥛</span>
+          <span class="thumb-label">點擊上傳縮圖</span>
+        </div>
+        <div class="item-body">
+          <div class="item-name">黑糖鮮奶</div>
+          <div class="item-note">全糖系</div>
+        </div>
       </article>
     </div>
   </section>
@@ -933,7 +1035,8 @@
       </div>
 
       <!-- 方案二（主推） -->
-      <div class="plan-card">
+      <div class="plan-card featured">
+        <div class="popular-badge">🔥 最受歡迎</div>
         <div class="plan-icon">🌐</div>
         <div class="plan-name">方案二｜GitHub × Google 表單</div>
         <div class="plan-desc">一至三頁專業網站，結合線上表單，快速收集訂單</div>
@@ -951,8 +1054,7 @@
       </div>
 
       <!-- 方案三 -->
-      <div class="plan-card featured">
-        <div class="popular-badge">🔥 最受歡迎</div>
+      <div class="plan-card">
         <div class="plan-icon">🚀</div>
         <div class="plan-name">方案三｜完整整合方案</div>
         <div class="plan-desc">GitHub × Google 表單 × Line 官方帳號，全方位數位行銷</div>
@@ -983,7 +1085,7 @@
 <footer>
   <div class="footer-logo">🐸 FROG COMING 青蛙來了</div>
   <p>新北市永和區中和路613號｜<a href="tel:0289211507">02-8921-1507</a></p>
-  <p style="margin-top:10px; font-size:0.78rem; opacity:0.6;">此網頁為品牌網站範例｜版權所有 © EAR Web Design</p>
+  <p style="margin-top:10px; font-size:0.78rem; opacity:0.6;">此網頁為品牌網站範例｜版權所有 © 2024</p>
 </footer>
 
 <script>
