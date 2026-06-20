@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang='zh-Hant-TW'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="EAR Web Design、作品集、網頁設計、接案、GitHub網站">
+    <meta name="description" content="EAR Web Design 作品集——展示為物理治療所、美容工作室、顧問品牌等客戶打造的官方網站作品，歡迎洽詢合作。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gail">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <title>作品集 | EAR Web Design</title>
+
+    <style>
+        /* =============================================
+           作品集頁面專屬樣式
+           ============================================= */
+
+        /* ── Hero 區塊 ── */
+        .portfolio-hero {
+            background: linear-gradient(135deg, #96543b 0%, #c47a45 60%, #e8a96a 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            color: #fff;
+        }
+        .portfolio-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .portfolio-hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.88);
+            max-width: 540px;
+            margin: 0 auto 28px;
+            line-height: 1.8;
+        }
+        .portfolio-hero .badge-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 20px;
+            padding: 5px 16px;
+            font-size: 0.85rem;
+            margin: 4px;
+            color: #fff;
+        }
+
+        /* ── 篩選按鈕列 ── */
+        .filter-bar {
+            background: #fff;
+            border-bottom: 1px solid #e8ddd5;
+            padding: 18px 0;
+            position: sticky;
+            top: 72px;
+            z-index: 99;
+        }
+        .filter-bar .btn-filter {
+            border: 2px solid #96543b;
+            color: #96543b;
+            border-radius: 20px;
+            padding: 6px 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin: 4px;
+            transition: all 0.25s ease;
+            background: transparent;
+        }
+        .filter-bar .btn-filter:hover,
+        .filter-bar .btn-filter.active {
+            background: #96543b;
+            color: #fff;
+        }
+
+        /* ── 作品卡片區塊 ── */
+        .portfolio-section {
+            padding: 60px 0 40px;
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #96543b;
+            margin-bottom: 6px;
+        }
+        .section-desc {
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 36px;
+        }
+
+        /* 作品卡片 */
+        .portfolio-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(150, 84, 59, 0.10);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(150, 84, 59, 0.18);
+        }
+
+        /* 卡片上方：模擬瀏覽器截圖框 */
+        .card-mockup {
+            position: relative;
+            background: #f5ede6;
+            padding: 12px 12px 0;
+        }
+        .browser-bar {
+            background: #e8ddd5;
+            border-radius: 8px 8px 0 0;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red   { background: #ff5f57; }
+        .dot-yellow{ background: #ffbd2e; }
+        .dot-green { background: #28c840; }
+        .browser-url {
+            background: #fff;
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-size: 0.72rem;
+            color: #aaa;
+            margin-left: 10px;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-screen {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            border-radius: 0 0 4px 4px;
+        }
+        /* 無截圖時的佔位色塊 */
+        .card-screen-placeholder {
+            width: 100%;
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* 卡片下方：文字區 */
+        .card-body-custom {
+            padding: 22px 22px 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .cat-therapy  { color: #33928e; }
+        .cat-beauty   { color: #c4679a; }
+        .cat-fitness  { color: #e07b39; }
+        .cat-consult  { color: #5b7fc4; }
+        .cat-food     { color: #7aab3e; }
+
+        .card-title-custom {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            font-size: 0.88rem;
+            color: #888;
+            line-height: 1.6;
+            flex: 1;
+        }
+        .card-tags {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: #f5ede6;
+            color: #96543b;
+        }
+        .card-footer-custom {
+            padding: 14px 22px;
+            border-top: 1px solid #f0e8e0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .card-footer-custom .btn-view {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #96543b;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.2s ease;
+        }
+        .card-footer-custom .btn-view:hover { gap: 8px; color: #c47a45; }
+        .card-footer-custom .year-badge {
+            font-size: 0.75rem;
+            color: #bbb;
+        }
+
+        /* ── 服務成果統計列 ── */
+        .stats-bar {
+            background: #96543b;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .stat-item .stat-number {
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .stat-item .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+        .stat-divider {
+            width: 1px;
+            height: 60px;
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* ── 客戶評價 ── */
+        .testimonial-section {
+            background: #fdf8f4;
+            padding: 70px 0;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 18px rgba(150,84,59,0.08);
+            margin-bottom: 24px;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: "\201C";
+            font-size: 5rem;
+            color: #f0e0d0;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            padding-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .author-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #333;
+        }
+        .author-role {
+            font-size: 0.78rem;
+            color: #aaa;
+        }
+        .stars { color: #f5a623; font-size: 0.85rem; }
+
+        /* ── 洽詢 CTA ── */
+        .cta-section {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            padding: 70px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            margin-bottom: 32px;
+        }
+        .btn-cta-white {
+            background: #fff;
+            color: #96543b;
+            font-weight: 800;
+            border-radius: 30px;
+            padding: 14px 36px;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin: 6px;
+        }
+        .btn-cta-white:hover {
+            background: #f5ede6;
+            color: #96543b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .btn-cta-outline {
+            background: transparent;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 13px 34px;
+            font-size: 1rem;
+            border: 2px solid rgba(255,255,255,0.6);
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin: 6px;
+        }
+        .btn-cta-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        /* ── 流程說明 ── */
+        .process-section {
+            padding: 70px 0;
+            background: #fff;
+        }
+        .process-step {
+            text-align: center;
+            padding: 20px;
+        }
+        .step-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 16px;
+            font-weight: 900;
+        }
+        .step-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        .step-desc {
+            font-size: 0.84rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* ── RWD ── */
+        @media (max-width: 768px) {
+            .portfolio-hero h1 { font-size: 1.8rem; }
+            .filter-bar { top: 66px; }
+            .stats-bar .stat-divider { display: none; }
+            .cta-section h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== NAVBAR（與整站一致）===================== -->
+    <header class="header-fixed">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-0 shadow fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html"><img src="img/Logo.png" alt="Logo" width="80"></a>
+                    <div class="d-flex align-items-center ms-auto order-lg-last">
+                        <div class="d-flex me-3">
+                            <a href="https://www.instagram.com/polarbear_physio?igsh=bnZkdzNlejRmcDJl&utm_source=qr" target="_blank" class="me-3"><img src="img/icon-IG.png" alt="IG" width="35"></a>
+                            <a href="https://www.youtube.com/@euniceyu" target="_blank" class="me-3"><img src="img/icon-YT.png" alt="YouTube" width="35"></a>
+                            <a href="https://lin.ee/nXOLMsZ" target="_blank"><img src="img/icon-Line.png" alt="Line官方帳號" width="35"></a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="bi bi-list" style="font-size: 2em; color: #333;"></i>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-house-fill"></i> EAR Web Design
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="index.html"><i class="bi bi-house-fill me-2"></i>EAR Web Design</a></li>
+                                    <li><a class="dropdown-item" href="line_reserve.html"><i class="bi bi-line me-2"></i>官方帳號</a></li>
+                                </ul>
+                            </li>
+                            <!-- ★ 作品集（新增）★ -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="portfolio.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-grid-1x2-fill"></i> 作品集
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="portfolio.html#all"><i class="bi bi-collection-fill me-2"></i>所有作品</a></li>
+                                    <li><a class="dropdown-item" href="portfolio.html#therapy"><i class="bi bi-heart-pulse-fill me-2"></i>物理治療 / 復健</a></li>
+                                    <li><a class="dropdown-item" href="portfolio.html#beauty"><i class="bi bi-stars me-2"></i>美容 / 美髮</a></li>
+                                    <li><a class="dropdown-item" href="portfolio.html#fitness"><i class="bi bi-lightning-fill me-2"></i>健身 / 瑜珈</a></li>
+                                    <li><a class="dropdown-item" href="portfolio.html#consult"><i class="bi bi-briefcase-fill me-2"></i>顧問 / 諮詢</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger fw-bold" href="reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>立即預約洽詢</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-calendar-check-fill"></i> 立即預約
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>網頁版預約表</a></li>
+                                    <li><a class="dropdown-item" href="google.html"><i class="bi bi-file-earmark-spreadsheet-fill me-2"></i>表單版預約表</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Ticket.html">
+                                    <i class="bi bi-ticket-detailed me-2"></i>套票建檔
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="location.html">
+                                    <i class="bi bi-geo-fill"></i> 服務據點
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="YT.html"><i class="bi bi-youtube me-2"></i> YouTube</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="portfolio-hero">
+        <div class="container" style="display:block;">
+            <p class="badge-tag mb-3 d-inline-block"><i class="bi bi-grid-1x2-fill me-1"></i> 作品集 Portfolio</p>
+            <h1>每一個網站<br>都是一個品牌的起點</h1>
+            <p>從物理治療所到美容工作室，EAR Web Design 協助各類個人品牌與工作室，快速建立具有專業感的官方網站。</p>
+            <div>
+                <span class="badge-tag"><i class="bi bi-heart-pulse-fill me-1"></i> 物理治療</span>
+                <span class="badge-tag"><i class="bi bi-stars me-1"></i> 美容美髮</span>
+                <span class="badge-tag"><i class="bi bi-lightning-fill me-1"></i> 健身瑜珈</span>
+                <span class="badge-tag"><i class="bi bi-briefcase-fill me-1"></i> 顧問諮詢</span>
+                <span class="badge-tag"><i class="bi bi-cup-hot-fill me-1"></i> 餐飲品牌</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 篩選列 ===================== -->
+    <div class="filter-bar" id="all">
+        <div class="container" style="display:block; text-align:center;">
+            <button class="btn-filter active" onclick="filterCards('all', this)">全部作品</button>
+            <button class="btn-filter" onclick="filterCards('therapy', this)" id="therapy">物理治療 / 復健</button>
+            <button class="btn-filter" onclick="filterCards('beauty', this)" id="beauty">美容 / 美髮</button>
+            <button class="btn-filter" onclick="filterCards('fitness', this)" id="fitness">健身 / 瑜珈</button>
+            <button class="btn-filter" onclick="filterCards('consult', this)" id="consult">顧問 / 諮詢</button>
+            <button class="btn-filter" onclick="filterCards('food', this)" id="food">餐飲品牌</button>
+        </div>
+    </div>
+
+    <!-- ===================== 作品卡片 ===================== -->
+    <section class="portfolio-section">
+        <div class="container" style="display:block;">
+            <h2 class="section-title">精選作品</h2>
+            <p class="section-desc">每個案例皆包含 RWD 響應式設計、SEO 基本設定、社群整合與 Line 自動通知預約系統</p>
+
+            <div class="row g-4">
+
+                <!-- 作品 1 -->
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="therapy">
+                    <div class="portfolio-card h-100">
+                        <div class="card-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="browser-url">www.polarbear-physio.com</div>
+                            </div>
+                            <div class="card-screen-placeholder" style="background:linear-gradient(135deg,#e8f5f4,#b2dfdb);">🐻‍❄️</div>
+                        </div>
+                        <div class="card-body-custom">
+                            <p class="card-category cat-therapy"><i class="bi bi-heart-pulse-fill me-1"></i> 物理治療</p>
+                            <h3 class="card-title-custom">北極熊物理治療所</h3>
+                            <p class="card-desc">一頁式品牌官網，整合 Line 官方帳號、24 小時自動預約系統與套票管理，省下院所 80% 預約行政時間。</p>
+                            <div class="card-tags">
+                                <span class="tag">RWD</span>
+                                <span class="tag">Line 自動通知</span>
+                                <span class="tag">套票管理</span>
+                                <span class="tag">SEO</span>
+                            </div>
+                        </div>
+                        <div class="card-footer-custom">
+                            <a href="#" class="btn-view"><i class="bi bi-box-arrow-up-right"></i> 瀏覽網站</a>
+                            <span class="year-badge">2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品 2 -->
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="beauty">
+                    <div class="portfolio-card h-100">
+                        <div class="card-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="browser-url">www.graceskin-studio.com</div>
+                            </div>
+                            <div class="card-screen-placeholder" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">🌸</div>
+                        </div>
+                        <div class="card-body-custom">
+                            <p class="card-category cat-beauty"><i class="bi bi-stars me-1"></i> 美容 / 美髮</p>
+                            <h3 class="card-title-custom">Grace Skin 美顏工作室</h3>
+                            <p class="card-desc">質感品牌官網，展示服務項目與作品實績，整合 Google 表單線上預約與 Email 自動確認通知，提升顧客信任度。</p>
+                            <div class="card-tags">
+                                <span class="tag">多頁式</span>
+                                <span class="tag">Google 表單</span>
+                                <span class="tag">Email 通知</span>
+                                <span class="tag">作品展示</span>
+                            </div>
+                        </div>
+                        <div class="card-footer-custom">
+                            <a href="#" class="btn-view"><i class="bi bi-box-arrow-up-right"></i> 瀏覽網站</a>
+                            <span class="year-badge">2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品 3 -->
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="fitness">
+                    <div class="portfolio-card h-100">
+                        <div class="card-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="browser-url">www.sunrise-yoga.com.tw</div>
+                            </div>
+                            <div class="card-screen-placeholder" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">🧘</div>
+                        </div>
+                        <div class="card-body-custom">
+                            <p class="card-category cat-fitness"><i class="bi bi-lightning-fill me-1"></i> 健身 / 瑜珈</p>
+                            <h3 class="card-title-custom">Sunrise Yoga 晨光瑜珈</h3>
+                            <p class="card-desc">課程展示型官網，結合時段預約日曆與套票點數系統，讓學員隨時掌握課堂餘額，教室專心顧好教學品質。</p>
+                            <div class="card-tags">
+                                <span class="tag">課程日曆</span>
+                                <span class="tag">套票點數</span>
+                                <span class="tag">Line 通知</span>
+                                <span class="tag">RWD</span>
+                            </div>
+                        </div>
+                        <div class="card-footer-custom">
+                            <a href="#" class="btn-view"><i class="bi bi-box-arrow-up-right"></i> 瀏覽網站</a>
+                            <span class="year-badge">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品 4 -->
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="consult">
+                    <div class="portfolio-card h-100">
+                        <div class="card-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="browser-url">www.mapleconsult.tw</div>
+                            </div>
+                            <div class="card-screen-placeholder" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9);">💼</div>
+                        </div>
+                        <div class="card-body-custom">
+                            <p class="card-category cat-consult"><i class="bi bi-briefcase-fill me-1"></i> 顧問 / 諮詢</p>
+                            <h3 class="card-title-custom">楓葉職涯顧問</h3>
+                            <p class="card-desc">專業顧問個人品牌網站，展示服務方案與客戶成果，整合一對一諮詢預約系統，自動化確認流程讓顧問專注服務。</p>
+                            <div class="card-tags">
+                                <span class="tag">個人品牌</span>
+                                <span class="tag">諮詢預約</span>
+                                <span class="tag">方案展示</span>
+                                <span class="tag">SEO</span>
+                            </div>
+                        </div>
+                        <div class="card-footer-custom">
+                            <a href="#" class="btn-view"><i class="bi bi-box-arrow-up-right"></i> 瀏覽網站</a>
+                            <span class="year-badge">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品 5 -->
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="food">
+                    <div class="portfolio-card h-100">
+                        <div class="card-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="browser-url">www.frogtea-taipei.com</div>
+                            </div>
+                            <div class="card-screen-placeholder" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">🐸</div>
+                        </div>
+                        <div class="card-body-custom">
+                            <p class="card-category cat-food"><i class="bi bi-cup-hot-fill me-1"></i> 餐飲品牌</p>
+                            <h3 class="card-title-custom">青蛙茶飲品牌官網</h3>
+                            <p class="card-desc">飲品品牌形象網站，展示飲品菜單與品牌故事，嵌入 Google 地圖與 IG 動態牆，讓社群流量自然導入官網。</p>
+                            <div class="card-tags">
+                                <span class="tag">品牌形象</span>
+                                <span class="tag">菜單展示</span>
+                                <span class="tag">Google 地圖</span>
+                                <span class="tag">IG 整合</span>
+                            </div>
+                        </div>
+                        <div class="card-footer-custom">
+                            <a href="FrogTea.html" class="btn-view"><i class="bi bi-box-arrow-up-right"></i> 瀏覽網站</a>
+                            <span class="year-badge">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 作品 6 -->
+                <div class="col-md-6 col-lg-4 portfolio-item" data-category="therapy">
+                    <div class="portfolio-card h-100">
+                        <div class="card-mockup">
+                            <div class="browser-bar">
+                                <div class="browser-dot dot-red"></div>
+                                <div class="browser-dot dot-yellow"></div>
+                                <div class="browser-dot dot-green"></div>
+                                <div class="browser-url">www.move-rehab.com.tw</div>
+                            </div>
+                            <div class="card-screen-placeholder" style="background:linear-gradient(135deg,#e0f7fa,#b2ebf2);">🏃</div>
+                        </div>
+                        <div class="card-body-custom">
+                            <p class="card-category cat-therapy"><i class="bi bi-heart-pulse-fill me-1"></i> 物理治療</p>
+                            <h3 class="card-title-custom">動力物理治療與運動復健</h3>
+                            <p class="card-desc">多頁式診所官網，展示服務項目與衛教文章，結合 Line 官方帳號自動預約回覆，提升病患回診意願與品牌黏著度。</p>
+                            <div class="card-tags">
+                                <span class="tag">多頁式</span>
+                                <span class="tag">衛教文章</span>
+                                <span class="tag">Line 官方帳號</span>
+                                <span class="tag">SEO</span>
+                            </div>
+                        </div>
+                        <div class="card-footer-custom">
+                            <a href="#" class="btn-view"><i class="bi bi-box-arrow-up-right"></i> 瀏覽網站</a>
+                            <span class="year-badge">2025</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+
+    <!-- ===================== 服務成果統計 ===================== -->
+    <section class="stats-bar">
+        <div class="container" style="display:block;">
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-6 col-md-auto stat-item">
+                    <div class="stat-number">18+</div>
+                    <div class="stat-label">完成專案數</div>
+                </div>
+                <div class="col-auto d-none d-md-block stat-divider"></div>
+                <div class="col-6 col-md-auto stat-item">
+                    <div class="stat-number">80%</div>
+                    <div class="stat-label">客戶省下的行政時間</div>
+                </div>
+                <div class="col-auto d-none d-md-block stat-divider"></div>
+                <div class="col-6 col-md-auto stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">服務產業類別</div>
+                </div>
+                <div class="col-auto d-none d-md-block stat-divider"></div>
+                <div class="col-6 col-md-auto stat-item">
+                    <div class="stat-number">3週</div>
+                    <div class="stat-label">平均交件週期</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 客戶真實評價 ===================== -->
+    <section class="testimonial-section">
+        <div class="container" style="display:block;">
+            <h2 class="section-title text-center">客戶怎麼說</h2>
+            <p class="section-desc text-center mb-5">真實回饋，讓作品說話</p>
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">「網站上線後，Line 官方帳號每天都有新客人主動詢問，省去我大量回覆訊息的時間，非常推薦！」</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background:#e8f5f4;">🐻‍❄️</div>
+                            <div>
+                                <div class="author-name">Amy 物理治療師</div>
+                                <div class="author-role">北極熊物理治療所</div>
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">「以前預約靠 IG 私訊，常常遺漏。現在官網自動幫我寄確認信、提醒客人，退預約率降低很多！」</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background:#fce4ec;">🌸</div>
+                            <div>
+                                <div class="author-name">Grace 美容師</div>
+                                <div class="author-role">Grace Skin 美顏工作室</div>
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">「套票管理功能真的救了我！學員的點數我不用再手動記，系統月底自動通知，學員也覺得很有保障。」</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background:#fff3e0;">🧘</div>
+                            <div>
+                                <div class="author-name">Lily 瑜珈老師</div>
+                                <div class="author-role">Sunrise Yoga 晨光瑜珈</div>
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== 合作流程 ===================== -->
+    <section class="process-section">
+        <div class="container" style="display:block;">
+            <h2 class="section-title text-center">合作流程</h2>
+            <p class="section-desc text-center mb-5">從洽談到上線，全程陪跑，不讓你孤單</p>
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-2 process-step">
+                    <div class="step-circle" style="background:#e8f5f4; color:#33928e;">①</div>
+                    <div class="step-title">需求洽談</div>
+                    <div class="step-desc">Line 或表單<br>提交需求</div>
+                </div>
+                <div class="col-6 col-md-2 process-step">
+                    <div class="step-circle" style="background:#fff3e0; color:#e07b39;">②</div>
+                    <div class="step-title">報價確認</div>
+                    <div class="step-desc">根據需求提供<br>明確報價單</div>
+                </div>
+                <div class="col-6 col-md-2 process-step">
+                    <div class="step-circle" style="background:#fce4ec; color:#c4679a;">③</div>
+                    <div class="step-title">設計製作</div>
+                    <div class="step-desc">版面設計＋<br>功能開發</div>
+                </div>
+                <div class="col-6 col-md-2 process-step">
+                    <div class="step-circle" style="background:#e8eaf6; color:#5b7fc4;">④</div>
+                    <div class="step-title">內容確認</div>
+                    <div class="step-desc">兩次免費<br>修改機會</div>
+                </div>
+                <div class="col-6 col-md-2 process-step">
+                    <div class="step-circle" style="background:#e8f5e9; color:#7aab3e;">⑤</div>
+                    <div class="step-title">網站上線</div>
+                    <div class="step-desc">GitHub Pages<br>部署＋操作教學</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CTA 洽詢 ===================== -->
+    <section class="cta-section">
+        <div class="container" style="display:block;">
+            <h2>準備好打造您的品牌官網了嗎？</h2>
+            <p>現在預約免費諮詢，讓 EAR Web Design 帶您從零開始，<br>擁有屬於自己的專業網站。</p>
+            <a href="reserve.html" class="btn-cta-white"><i class="bi bi-calendar-check-fill me-2"></i>立即預約洽詢</a>
+            <a href="https://lin.ee/nXOLMsZ" target="_blank" class="btn-cta-outline"><i class="bi bi-line me-2"></i>加入 Line 詢問</a>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER（與整站一致）===================== -->
+    <footer>
+        <div class="container" style="display:block;">
+            <div class="row">
+                <div class="col-md-6 offset-md-1 justify-content-center">
+                    <h4>網站地圖</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="bi bi-house-fill me-2"></i>EAR Web Design</a></li>
+                        <li><a href="portfolio.html"><i class="bi bi-grid-1x2-fill me-2"></i>作品集</a></li>
+                        <li><a href="line_reserve.html"><i class="bi bi-line me-2"></i>官方 Line 帳號</a></li>
+                        <li><a href="reserve.html"><i class="bi bi-calendar-check-fill me-2"></i>網頁版預約表</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="google.html"><i class="bi bi-file-earmark-spreadsheet-fill me-2"></i>表單版預約表</a></li>
+                        <li><a href="Ticket.html"><i class="bi bi-ticket-detailed me-2"></i>套票建檔</a></li>
+                        <li><a href="YT.html"><i class="bi bi-youtube me-2"></i>YouTube</a></li>
+                        <li><a href="location.html"><i class="bi bi-geo-fill me-2"></i>服務據點</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <h4>聯絡我們</h4>
+                    <p>
+                        加入官方帳號：<a href="https://lin.ee/nXOLMsZ">https://lin.ee/nXOLMsZ</a><br>
+                        掃碼加入 Line：<img src="img/S_line.png" alt="Line官方帳號" width="80">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== JS：篩選功能 ===================== -->
+    <script>
+        function filterCards(category, btn) {
+            // 更新按鈕狀態
+            document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // 篩選卡片
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = '';
+                    // 加入淡入動畫
+                    item.style.opacity = 0;
+                    setTimeout(() => { item.style.opacity = 1; item.style.transition = 'opacity 0.4s ease'; }, 10);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 從 URL hash 自動篩選
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = location.hash.replace('#', '');
+            const validCats = ['therapy','beauty','fitness','consult','food'];
+            if (validCats.includes(hash)) {
+                const btn = document.getElementById(hash);
+                if (btn) filterCards(hash, btn);
+            }
+        });
+    </script>
+
+</body>
+</html>
