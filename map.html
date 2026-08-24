@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EAR Physio — 網頁結構 × CSS 對應架構圖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:     #FAF5EE;
+      --cream-2:   #f5ede0;
+      --cream-3:   #EDE0CE;
+      --white:     #FEFCF8;
+      --coffee:    #5f3d2e;
+      --coffee-lt: #8b5e4a;
+      --gold:      #c4973f;
+      --gold-dk:   #a67c30;
+      --gold-lt:   #d9b96a;
+      --gold-bg:   rgba(196,151,63,.1);
+      --hair:      #e4d4c0;
+      --font-sans: 'Noto Sans TC', sans-serif;
+      --font-serif:'Noto Serif TC', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: #f7f2ec;
+      color: var(--coffee);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── PAGE HEADER ── */
+    .pg-header {
+      background: var(--coffee);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 1.5rem;
+      border-bottom: 4px solid var(--gold);
+    }
+    .pg-header h1 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      margin-bottom: .35rem;
+    }
+    .pg-header p { font-size: .82rem; color: rgba(255,255,255,.68); letter-spacing: .04em; }
+
+    /* ── LEGEND ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      justify-content: center;
+      padding: 1rem 1.5rem;
+      background: var(--cream-2);
+      border-bottom: 1px solid var(--cream-3);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .75rem;
+      color: var(--coffee-lt);
+    }
+    .legend-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .arch-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    /* ── 檔案橫欄標題 ── */
+    .file-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .file-label {
+      background: var(--coffee);
+      color: #fff;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: .85rem .5rem;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-align: center;
+      gap: .3rem;
+    }
+    .file-label .file-icon { font-size: 1.5rem; }
+    .file-label .file-name { font-size: .72rem; color: var(--gold-lt); font-weight: 400; }
+
+    /* ── SECTION BLOCK ── */
+    .sec-block {
+      border: 1.5px solid var(--cream-3);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      padding: .6rem 1rem;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .04em;
+      border-bottom: 1px solid var(--cream-3);
+      position: relative;
+    }
+    .sec-head::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      border-radius: 0;
+    }
+    .sec-head .sid { font-family: 'Courier New', monospace; font-size: .7rem; opacity: .6; }
+    .sec-head .stag { font-size: .68rem; padding: .12rem .45rem; border-radius: 20px; font-weight: 600; margin-left: auto; }
+
+    .sec-body {
+      padding: .75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    /* ── ELEMENT ROW ── */
+    .el-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: .5rem;
+      align-items: start;
+      padding: .45rem .55rem;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: background .2s;
+    }
+    .el-row:hover { background: var(--cream); }
+
+    .el-html {
+      font-family: 'Courier New', monospace;
+      font-size: .72rem;
+      color: #2563eb;
+      word-break: break-all;
+    }
+    .el-class {
+      font-family: 'Courier New', monospace;
+      font-size: .7rem;
+      color: #7c3aed;
+      word-break: break-all;
+    }
+    .el-css {
+      font-size: .72rem;
+      color: var(--coffee-lt);
+      line-height: 1.55;
+    }
+    .el-css code {
+      display: inline-block;
+      padding: .08rem .3rem;
+      background: rgba(196,151,63,.1);
+      border: 1px solid rgba(196,151,63,.2);
+      border-radius: 3px;
+      font-size: .67rem;
+      color: var(--gold-dk);
+      margin: .1rem .05rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    .el-lbl {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      padding: .1rem .35rem;
+      border-radius: 3px;
+      display: inline-block;
+      margin-right: .3rem;
+    }
+
+    /* ── Sub indent ── */
+    .el-row.indent-1 { padding-left: 1.5rem; }
+    .el-row.indent-2 { padding-left: 2.5rem; }
+    .el-row.indent-3 { padding-left: 3.5rem; }
+
+    /* ── Color coding by section ── */
+    /* NAVBAR */ .c-nav .sec-head { background: #fff8f0; color: #7c3d1e; }
+    .c-nav .sec-head::before { background: #d97706; }
+    .c-nav .sec-head .stag { background: #fef3c7; color: #92400e; }
+    /* HERO */ .c-hero .sec-head { background: #fef9f0; color: #78350f; }
+    .c-hero .sec-head::before { background: var(--gold); }
+    .c-hero .sec-head .stag { background: #fef3c7; color: #92400e; }
+    /* ABOUT */ .c-about .sec-head { background: #f0fdf4; color: #166534; }
+    .c-about .sec-head::before { background: #16a34a; }
+    .c-about .sec-head .stag { background: #dcfce7; color: #166534; }
+    /* SERVICES */ .c-svc .sec-head { background: #eff6ff; color: #1d4ed8; }
+    .c-svc .sec-head::before { background: #3b82f6; }
+    .c-svc .sec-head .stag { background: #dbeafe; color: #1d4ed8; }
+    /* GOODS */ .c-goods .sec-head { background: #fdf4ff; color: #7e22ce; }
+    .c-goods .sec-head::before { background: #a855f7; }
+    .c-goods .sec-head .stag { background: #f3e8ff; color: #7e22ce; }
+    /* PROCESS */ .c-proc .sec-head { background: #fff7ed; color: #c2410c; }
+    .c-proc .sec-head::before { background: #ea580c; }
+    .c-proc .sec-head .stag { background: #ffedd5; color: #c2410c; }
+    /* FAQ/VIDEOS */ .c-vid .sec-head { background: #fef2f2; color: #b91c1c; }
+    .c-vid .sec-head::before { background: #ef4444; }
+    .c-vid .sec-head .stag { background: #fee2e2; color: #b91c1c; }
+    /* CONTACT */ .c-contact .sec-head { background: #f0f9ff; color: #0369a1; }
+    .c-contact .sec-head::before { background: #0ea5e9; }
+    .c-contact .sec-head .stag { background: #e0f2fe; color: #0369a1; }
+    /* FOOTER */ .c-footer .sec-head { background: #f5f3ff; color: #5b21b6; }
+    .c-footer .sec-head::before { background: #7c3aed; }
+    .c-footer .sec-head .stag { background: #ede9fe; color: #5b21b6; }
+    /* GLOBAL */ .c-global .sec-head { background: var(--cream-2); color: var(--coffee); }
+    .c-global .sec-head::before { background: var(--coffee); }
+    .c-global .sec-head .stag { background: var(--cream-3); color: var(--coffee-lt); }
+
+    /* ── Column header ── */
+    .col-header {
+      display: grid;
+      grid-template-columns: 180px 1fr 1fr;
+      gap: .5rem;
+      padding: .35rem .55rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--coffee-lt);
+      border-bottom: 1px solid var(--cream-3);
+      margin-bottom: .2rem;
+    }
+
+    /* ── Responsive note ── */
+    .rwd-note {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      padding: .5rem .75rem;
+      background: rgba(196,151,63,.07);
+      border: 1px solid rgba(196,151,63,.2);
+      border-radius: 6px;
+      font-size: .72rem;
+      color: var(--coffee-lt);
+      margin-top: .25rem;
+    }
+    .rwd-note strong { color: var(--gold-dk); }
+
+    /* ── Design token block ── */
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: .5rem;
+      padding: .75rem 1rem;
+    }
+    .token-group { background: var(--cream); border-radius: 6px; padding: .55rem .65rem; }
+    .token-group h4 {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--coffee-lt);
+      margin-bottom: .4rem;
+      border-bottom: 1px solid var(--hair);
+      padding-bottom: .2rem;
+    }
+    .token-row {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .15rem 0;
+      font-size: .7rem;
+    }
+    .token-var { font-family: 'Courier New', monospace; color: #7c3aed; font-size: .67rem; }
+    .token-val { color: var(--coffee-lt); font-size: .67rem; }
+    .color-dot {
+      width: 12px; height: 12px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,.1);
+      flex-shrink: 0;
+    }
+
+    /* ── Script section ── */
+    .script-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: .5rem;
+      padding: .4rem .55rem;
+      border-radius: 6px;
+      font-size: .72rem;
+    }
+    .script-fn { font-family: 'Courier New', monospace; color: #2563eb; }
+    .script-desc { color: var(--coffee-lt); }
+
+    /* ── RWD Table ── */
+    .rwd-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .72rem;
+      margin: .5rem 0;
+    }
+    .rwd-table th {
+      background: var(--cream-2);
+      padding: .4rem .6rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--coffee);
+      border: 1px solid var(--cream-3);
+      letter-spacing: .04em;
+    }
+    .rwd-table td {
+      padding: .35rem .6rem;
+      border: 1px solid var(--cream-3);
+      color: var(--coffee-lt);
+      vertical-align: top;
+    }
+    .rwd-table tr:nth-child(even) td { background: var(--cream); }
+
+    .tag-html  { background: #dbeafe; color: #1d4ed8; }
+    .tag-css   { background: #ede9fe; color: #7c3aed; }
+    .tag-js    { background: #fef3c7; color: #92400e; }
+    .tag-seo   { background: #dcfce7; color: #166534; }
+    .tag-rwd   { background: #fce7f3; color: #9d174d; }
+    .tag-new   { background: #fee2e2; color: #b91c1c; }
+
+    hr.sec-divider {
+      border: none;
+      border-top: 2px dashed var(--cream-3);
+      margin: .25rem 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: .12rem .4rem;
+      border-radius: 20px;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+
+    @media (max-width: 768px) {
+      .file-row { grid-template-columns: 1fr; }
+      .col-header, .el-row { grid-template-columns: 1fr; }
+      .token-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="pg-header">
+  <h1>📐 EAR Physio — 網頁結構 × CSS 對應架構圖</h1>
+  <p>index.html 各區塊 ⟷ css/style.css 樣式類別完整對應表 &nbsp;|&nbsp; 2025 EAR 聆芯身體平衡</p>
+</header>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot" style="background:#f97316"></span>Navbar 導覽列</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#c4973f"></span>Hero 英雄區</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#16a34a"></span>About 關於我</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>Services 服務</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#a855f7"></span>Self-Care 好物</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#ea580c"></span>Process 流程</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span>FAQ 常見問答</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#0ea5e9"></span>Contact 預約</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#7c3aed"></span>Footer 頁尾</div>
+  <div class="legend-item"><span class="legend-dot" style="background:#5f3d2e"></span>Global 全域</div>
+</div>
+
+<div class="arch-wrap">
+
+  <!-- ═══════════════════════════════════════════
+       0. CSS Design Tokens（全域設計變數）
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-global">
+    <div class="sec-head">
+      <span>⚙️</span>
+      <span>CSS Design Tokens — 全域設計變數 <span class="sid">(:root)</span></span>
+      <span class="stag badge tag-css">style.css L.7–52</span>
+    </div>
+    <div class="token-grid">
+      <div class="token-group">
+        <h4>🎨 Colour Palette</h4>
+        <div class="token-row"><span class="color-dot" style="background:#FAF5EE"></span><span class="token-var">--cream</span><span class="token-val">#FAF5EE 主背景奶茶米白</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#f5ede0"></span><span class="token-var">--cream-2</span><span class="token-val">#f5ede0 深一階米白</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#EDE0CE"></span><span class="token-var">--cream-3</span><span class="token-val">#EDE0CE 卡片邊框/分隔線</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#FEFCF8"></span><span class="token-var">--white</span><span class="token-val">#FEFCF8 純白底</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#5f3d2e"></span><span class="token-var">--coffee</span><span class="token-val">#5f3d2e 主文字深咖啡</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#3d2318"></span><span class="token-var">--coffee-dk</span><span class="token-val">#3d2318 更深咖啡</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#8b5e4a"></span><span class="token-var">--coffee-lt</span><span class="token-val">#8b5e4a 淺咖啡/次文字</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#c4973f"></span><span class="token-var">--gold</span><span class="token-val">#c4973f 主金色 accent</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#a67c30"></span><span class="token-var">--gold-dk</span><span class="token-val">#a67c30 深金</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#d9b96a"></span><span class="token-var">--gold-lt</span><span class="token-val">#d9b96a 淺金</span></div>
+        <div class="token-row"><span class="color-dot" style="background:#e4d4c0"></span><span class="token-var">--hair</span><span class="token-val">#e4d4c0 極細分隔線</span></div>
+      </div>
+      <div class="token-group">
+        <h4>📝 Typography</h4>
+        <div class="token-row"><span class="token-var">--font-sans</span><span class="token-val">Noto Sans TC</span></div>
+        <div class="token-row"><span class="token-var">--font-serif</span><span class="token-val">Noto Serif TC</span></div>
+        <h4 style="margin-top:.6rem">📐 Spacing</h4>
+        <div class="token-row"><span class="token-var">--sp-xs</span><span class="token-val">0.4rem</span></div>
+        <div class="token-row"><span class="token-var">--sp-sm</span><span class="token-val">0.75rem</span></div>
+        <div class="token-row"><span class="token-var">--sp-md</span><span class="token-val">1.25rem</span></div>
+        <div class="token-row"><span class="token-var">--sp-lg</span><span class="token-val">1.35rem</span></div>
+        <div class="token-row"><span class="token-var">--sp-xl</span><span class="token-val">2.5rem</span></div>
+        <div class="token-row"><span class="token-var">--sp-2xl</span><span class="token-val">6rem</span></div>
+        <div class="token-row"><span class="token-var">--nav-h</span><span class="token-val">56px (手機 52px)</span></div>
+      </div>
+      <div class="token-group">
+        <h4>🔲 Border Radius</h4>
+        <div class="token-row"><span class="token-var">--r-sm</span><span class="token-val">4px</span></div>
+        <div class="token-row"><span class="token-var">--r-md</span><span class="token-val">6px</span></div>
+        <div class="token-row"><span class="token-var">--r-lg</span><span class="token-val">8px</span></div>
+        <div class="token-row"><span class="token-var">--r-xl</span><span class="token-val">12px</span></div>
+        <div class="token-row"><span class="token-var">--r-full</span><span class="token-val">999px</span></div>
+        <h4 style="margin-top:.6rem">🌫️ Shadow</h4>
+        <div class="token-row"><span class="token-var">--sh-sm</span><span class="token-val">0 1px 4px coffee/.06</span></div>
+        <div class="token-row"><span class="token-var">--sh-md</span><span class="token-val">0 4px 18px coffee/.09</span></div>
+        <div class="token-row"><span class="token-var">--sh-lg</span><span class="token-val">0 8px 32px coffee/.12</span></div>
+        <h4 style="margin-top:.6rem">🎯 Easing</h4>
+        <div class="token-row"><span class="token-var">--spring</span><span class="token-val">cubic-bezier(.22,1,.36,1)</span></div>
+        <div class="token-row"><span class="token-var">--ease</span><span class="token-val">cubic-bezier(.4,0,.2,1)</span></div>
+      </div>
+      <div class="token-group">
+        <h4>🌐 Global Section Helpers</h4>
+        <div class="token-row"><span class="token-var">.sec-white</span><span class="token-val">background: var(--white)</span></div>
+        <div class="token-row"><span class="token-var">.sec-cream</span><span class="token-val">background: var(--cream)</span></div>
+        <div class="token-row"><span class="token-var">.sec-wrap</span><span class="token-val">max-width:1100px, padding</span></div>
+        <div class="token-row"><span class="token-var">.sec-header</span><span class="token-val">text-align: center</span></div>
+        <div class="token-row"><span class="token-var">.sec-eye</span><span class="token-val">金色小標 uppercase .72rem</span></div>
+        <div class="token-row"><span class="token-var">.sec-sub</span><span class="token-val">次標題 .9rem coffee-lt</span></div>
+        <h4 style="margin-top:.6rem">🎞️ Scroll Animation</h4>
+        <div class="token-row"><span class="token-var">[data-ani]</span><span class="token-val">opacity:0, translateY(28px)</span></div>
+        <div class="token-row"><span class="token-var">[data-ani].ani-visible</span><span class="token-val">opacity:1, translateY(0)</span></div>
+        <div class="token-row"><span class="token-var">[data-ani-delay]</span><span class="token-val">60/80/100/120/160/200ms</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       1. NAVBAR
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-nav">
+    <div class="sec-head">
+      <span>🧭</span>
+      <span>① NAVBAR — 頂部固定導覽列</span>
+      <span class="sid">HTML: &lt;header id="navbar"&gt;</span>
+      <span class="stag badge tag-html">HTML L.94–162</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.122–294</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;div.nav-topline&gt;</div>
+        <div class="el-class">.nav-topline</div>
+        <div class="el-css">固定頂部深咖啡細線 <code>position:fixed</code><code>height:3px</code><code>z-index:1001</code><code>bg:coffee-dk</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;header id="navbar"&gt;</div>
+        <div class="el-class">#navbar</div>
+        <div class="el-css">固定導覽列 <code>position:fixed</code><code>top:3px</code><code>height:56px</code><code>bg:#F4EBE0</code><code>z-index:1000</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">&lt;nav.nav-wrap&gt;</div>
+        <div class="el-class">.nav-wrap</div>
+        <div class="el-css">內容容器 <code>max-width:1200px</code><code>display:flex</code><code>align-items:center</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.nav-brand → .nav-logo</div>
+        <div class="el-class">.nav-brand &nbsp; .nav-logo &nbsp; .nb-ear &nbsp; .nb-sub</div>
+        <div class="el-css">左側品牌區 serif字體<code>.nb-ear 1rem serif</code><code>.nb-sub .78rem coffee-lt</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.nav-center → a.nav-link</div>
+        <div class="el-class">.nav-center &nbsp; .nav-link</div>
+        <div class="el-css">中間導覽連結 <code>flex:1</code><code>justify-content:center</code><code>.nav-link padding:.3rem .65rem</code><code>font-size:.8rem</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.nav-socials → a.nsocial</div>
+        <div class="el-class">.nav-socials &nbsp; .nsocial &nbsp; .nsocial-ig &nbsp; .nsocial-yt &nbsp; .nsocial-line</div>
+        <div class="el-css">社群圓形按鈕 <code>30×30px border-radius:full</code>ig漸層/yt紅/line綠</div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">&lt;button.nav-toggle&gt;</div>
+        <div class="el-class">.nav-toggle &nbsp; .nav-toggle.open span:nth-child</div>
+        <div class="el-css">漢堡按鈕（手機顯示）<code>display:none → flex @640px</code>動畫：旋轉45deg成X</div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">&lt;div.nav-mobile&gt;</div>
+        <div class="el-class">.nav-mobile &nbsp; .nav-mobile.open &nbsp; .nm-link &nbsp; .nm-socials</div>
+        <div class="el-css">手機下拉選單 <code>position:fixed</code><code>display:none → flex</code><code>opacity:0→1 transition</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@640px → .nav-center & .nav-socials 隱藏；.nav-toggle 顯示；手機展開 .nav-mobile.open 使用 flex + opacity 動畫
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       2. HERO SECTION
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-hero">
+    <div class="sec-head">
+      <span>🌟</span>
+      <span>② HERO — 左文右圖英雄區</span>
+      <span class="sid">HTML: &lt;section id="hero" class="hero-section hero-split"&gt;</span>
+      <span class="stag badge tag-html">HTML L.170–316</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.296–819</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;section.hero-section.hero-split&gt;</div>
+        <div class="el-class">.hero-section &nbsp; .hero-split</div>
+        <div class="el-css">基底<code>min-height:100svh</code><code>bg:cream</code><code>overflow:hidden</code> ／ 分割布局<code>display:flex</code><code>flex-direction:column</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.hero-wm&gt; SVG 葉片</div>
+        <div class="el-class">.hero-wm &nbsp; .wm-leaf &nbsp; .wm-l1 .wm-l2 .wm-l3 &nbsp; .wm-lotus</div>
+        <div class="el-css">浮水印裝飾 <code>position:absolute; inset:0</code><code>pointer-events:none</code><code>opacity:.55</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.hero-topbar&gt;</div>
+        <div class="el-class">.hero-topbar &nbsp; .htb-gold &nbsp; .htb-light</div>
+        <div class="el-css">頂部雙色金線 <code>.htb-gold height:4px</code><code>.htb-light height:2px</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.hero-split-inner&gt;</div>
+        <div class="el-class">.hero-split-inner</div>
+        <div class="el-css">左右兩欄網格 <code>display:grid</code><code>grid-template-columns:1fr 1fr</code><code>max-width:1200px</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">&lt;div.hero-text-col&gt; 左欄</div>
+        <div class="el-class">.hero-text-col</div>
+        <div class="el-css"><code>display:flex</code><code>flex-direction:column</code><code>gap:sp-lg</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.hero-name-block → h1.hero-name</div>
+        <div class="el-class">.hero-name-block &nbsp; .hero-name &nbsp; .hero-title-tag &nbsp; .htt-bar &nbsp; .htt-label</div>
+        <div class="el-css">姓名大字<code>font-serif</code><code>clamp(2.8rem,6vw,4.5rem)</code><code>fw:900</code>職稱：金色短橫條+文字</div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.hero-stats.mobile-stats</div>
+        <div class="el-class">.hero-stats &nbsp; .mobile-stats &nbsp; .hstat-item &nbsp; .hstat-num &nbsp; .hstat-lbl &nbsp; .hstat-divider</div>
+        <div class="el-css">統計數據（手機版顯示） <code>display:none → flex @900px</code><code>bg:cream-2</code><code>hstat-num 1.7rem gold-dk</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.founder-main → p.founder-intro &amp; ul.founder-quotes</div>
+        <div class="el-class">.founder-main &nbsp; .founder-intro &nbsp; .founder-quotes &nbsp; .fq-dot &nbsp; .founder-closing</div>
+        <div class="el-css">介紹文 <code>.founder-quotes border-left:3px solid gold</code><code>bg:cream</code><code>.fq-dot color:gold</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.hero-cta → a.hcta-primary &amp; a.hcta-outline</div>
+        <div class="el-class">.hero-cta &nbsp; .hcta-primary &nbsp; .hcta-outline</div>
+        <div class="el-css">CTA按鈕 Primary<code>bg:gold</code><code>shadow gold/.35</code>Outline<code>border:coffee</code><code>hover背景翻轉</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">&lt;div.hero-img-col&gt; 右欄</div>
+        <div class="el-class">.hero-img-col &nbsp; .hero-photo-frame &nbsp; .hero-photo &nbsp; .hpf-deco</div>
+        <div class="el-css">照片框<code>max-width:480px</code><code>.hero-photo height:520px</code><code>object-fit:cover</code>右上金色裝飾框<code>.hpf-deco border-top/right:gold</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">.hero-stats.desktop-stats</div>
+        <div class="el-class">.desktop-stats</div>
+        <div class="el-css">統計數據（桌機版在照片正下方） <code>display:flex → none @900px</code><code>width:100%</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@900px → 1欄；照片移到頂部 order:-1；@640px → hero-photo height:240px；.hero-cta flex-direction:column
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       3. ABOUT SECTION
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-about">
+    <div class="sec-head">
+      <span>🌿</span>
+      <span>③ ABOUT — EAR 核心理念 × 學歷 × 合作</span>
+      <span class="sid">HTML: &lt;section id="about" class="sec-white"&gt;</span>
+      <span class="stag badge tag-html">HTML L.320–420</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.821–1171</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;div.about-grid&gt;</div>
+        <div class="el-class">.about-grid</div>
+        <div class="el-css">三欄網格 <code>grid-template-columns:repeat(3,1fr)</code><code>gap:sp-md</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">.about-card（共3張）</div>
+        <div class="el-class">.about-card &nbsp; .ac-topline &nbsp; .ac-icon</div>
+        <div class="el-css">卡片底板 <code>bg:cream</code><code>border-radius:r-lg</code><code>hover:translateY(-5px) scale(1.015)</code>頂部金漸層線3px</div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">卡片1：E.A.R.理念</div>
+        <div class="el-class">.ear-concepts &nbsp; .ear-concept-item &nbsp; .eci-letter &nbsp; .ear-tagline</div>
+        <div class="el-css">E/A/R 三條目 <code>.eci-letter 26×26px bg:gold-bg font:Georgia</code><code>.ear-tagline border-top/bottom:cream-3</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">卡片2：學歷經歷</div>
+        <div class="el-class">.ac-list &nbsp; .acl-dot &nbsp; .acl-dot.accent &nbsp; .ac-divider</div>
+        <div class="el-css">清單項目 <code>.acl-dot 5px gold circle</code><code>.ac-divider height:1px cream-3</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">卡片3：商業合作</div>
+        <div class="el-class">.about-card-collab &nbsp; .collab-items &nbsp; .collab-item &nbsp; .collab-icon &nbsp; .collab-cta</div>
+        <div class="el-css">合作項目列表 <code>.collab-icon 34×34px gold-bg</code><code>.collab-cta bg:gold hover:gold-lt</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@960px → 2欄；@640px → 1欄
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       4. SERVICES SECTION
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-svc">
+    <div class="sec-head">
+      <span>💼</span>
+      <span>④ SERVICES — 六大服務項目</span>
+      <span class="sid">HTML: &lt;section id="services" class="sec-white"&gt;</span>
+      <span class="stag badge tag-html">HTML L.431–484</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.1173–1242</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;div.svc-grid&gt;</div>
+        <div class="el-class">.svc-grid</div>
+        <div class="el-css">3欄網格 <code>grid-template-columns:repeat(3,1fr)</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;article.svc-card&gt;（×6）</div>
+        <div class="el-class">.svc-card &nbsp; .sc-icon &nbsp; .sc-tags &nbsp; .sc-tags li &nbsp; .sc-bottom-line</div>
+        <div class="el-css">服務卡片 <code>hover:translateY(-5px)</code>圖標<code>.sc-icon 1.35rem gold</code>標籤<code>border:cream-3 bg:white</code>底色線<code>gold→transparent漸層</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@960px → 2欄；@640px → 1欄
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       5. SELF-CARE GOODS
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-goods">
+    <div class="sec-head">
+      <span>🛍️</span>
+      <span>⑤ SELF-CARE ESSENTIALS — 自我照護好物</span>
+      <span class="sid">HTML: &lt;section id="populations" class="sec-cream"&gt;</span>
+      <span class="stag badge tag-html">HTML L.488–558</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.1839–2128</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;article.goods-hero-card&gt;</div>
+        <div class="el-class">.goods-hero-card</div>
+        <div class="el-css">大卡片 <code>grid-template-columns:420px 1fr</code><code>overflow:hidden</code><code>::before 頂部金線4px</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.ghc-img-col&gt; 左欄</div>
+        <div class="el-class">.ghc-img-col &nbsp; .ghc-specs-box &nbsp; .ghc-buy-btn.ghc-buy-desktop</div>
+        <div class="el-css">圖片+規格+按鈕垂直排 <code>bg:#f0faf8</code><code>flex-direction:column</code>hover圖片<code>scale(1.04)</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.ghc-info-col&gt; 右欄</div>
+        <div class="el-class">.ghc-info-col &nbsp; .gc-cat &nbsp; .ghc-lead &nbsp; .ghc-features &nbsp; .ghc-star &nbsp; .ghc-tip-wash</div>
+        <div class="el-css">文案欄 <code>padding:sp-xl</code>分類標籤<code>.gc-cat gold-bg</code>洗滌提示<code>.ghc-tip-wash bg:gold-bg italic</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">規格/按鈕 手機版</div>
+        <div class="el-class">.ghc-specs-mobile &nbsp; .ghc-buy-mobile</div>
+        <div class="el-css"><code>display:none → flex @640px</code>（桌機的.ghc-specs-box/.ghc-buy-desktop 手機隱藏）</div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@960px → 1fr 1fr；@640px → 1欄；圖片規格與按鈕在手機用 .ghc-specs-mobile/.ghc-buy-mobile 顯示
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       6. PROCESS SECTION
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-proc">
+    <div class="sec-head">
+      <span>🔄</span>
+      <span>⑥ PROCESS — 服務流程（四步驟）</span>
+      <span class="sid">HTML: &lt;section id="process" class="sec-white"&gt;</span>
+      <span class="stag badge tag-html">HTML L.563–598</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.1320–1390</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;div.proc-track&gt;</div>
+        <div class="el-class">.proc-track &nbsp; .proc-line</div>
+        <div class="el-css">橫向排列 <code>display:flex</code><code>justify-content:space-between</code>水平連接線<code>.proc-line absolute height:1px bg:hair</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.proc-step&gt;（×4）</div>
+        <div class="el-class">.proc-step &nbsp; .ps-n &nbsp; .ps-ic</div>
+        <div class="el-css">步驟卡 <code>flex:1 text-align:center</code>圓形數字<code>.ps-n 44×44px border:gold hover→bg:gold</code>圖標<code>.ps-ic 1.2rem gold</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@960px → flex-wrap；.proc-line display:none；步驟卡 50% 寬；@640px → 100% 寬
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       7. FAQ SECTION（原衛教影片 → 新 FAQ）
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-vid">
+    <div class="sec-head">
+      <span>❓</span>
+      <span>⑦ FAQ — 常見問答（原衛教影片專區 → 🆕 改為 FAQ 結構化資料）</span>
+      <span class="sid">HTML: &lt;section id="faq" class="sec-cream"&gt;</span>
+      <span class="stag badge tag-new badge">🆕 已更新</span>
+      <span class="stag badge tag-seo" style="margin-left:.3rem">Schema FAQ JSON-LD</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;section id="faq"&gt;</div>
+        <div class="el-class">.sec-cream &nbsp; .sec-wrap &nbsp; .sec-header</div>
+        <div class="el-css">沿用全域 sec-cream 奶茶背景，sec-wrap 最大寬 1100px</div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.faq-grid&gt;</div>
+        <div class="el-class">.faq-grid</div>
+        <div class="el-css">FAQ 問答列表容器 <code>display:flex flex-direction:column gap:sp-md</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">&lt;details.faq-item&gt;</div>
+        <div class="el-class">.faq-item &nbsp; .faq-item[open]</div>
+        <div class="el-css">可折疊問答卡片 <code>bg:white border:cream-3</code><code>[open] border-color:gold-lt</code></div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">&lt;summary.faq-q&gt;</div>
+        <div class="el-class">.faq-q &nbsp; .fq-icon &nbsp; .fq-num &nbsp; .fq-arrow</div>
+        <div class="el-css">問題列（可點擊）<code>display:flex</code><code>cursor:pointer</code>序號.fq-num<code>gold 圓形</code>箭頭旋轉動畫</div>
+      </div>
+      <div class="el-row indent-3">
+        <div class="el-html">&lt;div.faq-a&gt;</div>
+        <div class="el-class">.faq-a &nbsp; .faq-a-inner</div>
+        <div class="el-css">回答展開區 <code>border-top:cream-3</code><code>bg:cream</code>文字<code>.9rem coffee-lt</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.faq-yt-link&gt;</div>
+        <div class="el-class">.faq-yt-link &nbsp; .btn-yt</div>
+        <div class="el-css">底部 YouTube 連結 <code>bg:coffee</code><code>icon: red yt</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;script&gt; JSON-LD FAQ Schema</div>
+        <div class="el-class">type="application/ld+json"</div>
+        <div class="el-css">Google Rich Results FAQPage 結構化資料 — 大幅提高被 AI 搜尋引用機率</div>
+      </div>
+      <div class="rwd-note">
+        <strong>🔍 SEO 重點：</strong>&nbsp;每題 &lt;details&gt; 對應 JSON-LD FAQPage mainEntity → Q&A；Google AI Overview 可直接引用作為解答片段。<br>
+        <strong>📱 RWD：</strong>&nbsp;@640px → 1欄 單列；問答卡片 padding 縮小
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       8. CONTACT SECTION
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-contact">
+    <div class="sec-head">
+      <span>📱</span>
+      <span>⑧ CONTACT — 預約諮詢</span>
+      <span class="sid">HTML: &lt;section id="contact" class="sec-white"&gt;</span>
+      <span class="stag badge tag-html">HTML L.657–687</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.1483–1546</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;div.contact-layout&gt;</div>
+        <div class="el-class">.contact-layout</div>
+        <div class="el-css">兩欄 <code>grid-template-columns:1fr 1fr</code><code>gap:sp-xl</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">.contact-left → .contact-item（×3）</div>
+        <div class="el-class">.contact-left &nbsp; .contact-item &nbsp; .ci-ic &nbsp; .ci-ig .ci-yt .ci-ln &nbsp; .ci-lbl .ci-body</div>
+        <div class="el-css">社群資訊卡 <code>hover:translateX(4px)</code>圖示框<code>.ci-ic 40×40px</code>IG漸層/YT紅/LINE綠</div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">.contact-right → .qr-wrap</div>
+        <div class="el-class">.contact-right &nbsp; .qr-wrap</div>
+        <div class="el-css">QR Code 卡 <code>border:cream-3</code><code>padding:sp-md</code><code>img 140×140px</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@960px → 1欄；@640px → QR Code order:-1（移到頂部）
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       9. FOOTER
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-footer">
+    <div class="sec-head">
+      <span>🦶</span>
+      <span>⑨ FOOTER — 四欄頁尾</span>
+      <span class="sid">HTML: &lt;footer id="footer"&gt;</span>
+      <span class="stag badge tag-html">HTML L.696–786</span>
+      <span class="stag badge tag-css" style="margin-left:.3rem">CSS L.1548–1737</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>HTML 元素</div><div>CSS Class / Selector</div><div>主要樣式說明</div></div>
+
+      <div class="el-row">
+        <div class="el-html">&lt;footer&gt;</div>
+        <div class="el-class">footer</div>
+        <div class="el-css">深咖啡背景 <code>bg:#5f3d2e</code><code>color:white/.72</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">.ft-topbar</div>
+        <div class="el-class">.ft-topbar</div>
+        <div class="el-css">頂部橘金漸層線 <code>height:3px</code><code>linear-gradient gold-dk→gold→gold-lt</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">&lt;div.ft-grid&gt;</div>
+        <div class="el-class">.ft-grid</div>
+        <div class="el-css">四欄 <code>grid-template-columns:260px 1fr 1fr 1fr</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">.ft-brand-col</div>
+        <div class="el-class">.ft-brand-col &nbsp; .ft-logo-row &nbsp; .ft-logo-box &nbsp; .ft-brand-name &nbsp; .ft-brand-desc &nbsp; .ft-socials &nbsp; .ft-social-btn</div>
+        <div class="el-css">品牌欄 Logo橘底+名稱 描述 社群方形按鈕<code>hover:gold-dk</code></div>
+      </div>
+      <div class="el-row indent-2">
+        <div class="el-html">.ft-nav-col（×3）</div>
+        <div class="el-class">.ft-nav-col &nbsp; .fn-heading &nbsp; .fn-list li a</div>
+        <div class="el-css">導覽欄<code>.fn-heading border-bottom:white/.1</code>連結<code>hover:gold-lt padding-left+4px</code></div>
+      </div>
+      <div class="el-row indent-1">
+        <div class="el-html">.ft-bottom</div>
+        <div class="el-class">.ft-bottom &nbsp; .ft-copy &nbsp; .ft-kws li</div>
+        <div class="el-css">版權+SEO關鍵字<code>.ft-copy color:white/.38</code><code>.ft-kws li 視覺隱藏但可爬取</code></div>
+      </div>
+      <div class="rwd-note">
+        <strong>📱 RWD：</strong>&nbsp;@960px → 2欄，品牌欄佔全行；@640px → 1欄垂直堆疊
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       10. GLOBAL JS + UTILITIES
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-global">
+    <div class="sec-head">
+      <span>⚡</span>
+      <span>⑩ JavaScript (js/main.js) — 互動功能</span>
+      <span class="stag badge tag-js">js/main.js</span>
+    </div>
+    <div class="sec-body">
+      <div class="col-header"><div>函式 / 功能</div><div>說明</div></div>
+      <div class="script-row"><div class="script-fn">navbar scroll</div><div class="script-desc">滾動超過閾值 → #navbar 加 .scrolled 類（box-shadow 出現）</div></div>
+      <div class="script-row"><div class="script-fn">navToggle click</div><div class="script-desc">漢堡按鈕 → .nav-toggle.open / .nav-mobile.open 切換</div></div>
+      <div class="script-row"><div class="script-fn">IntersectionObserver</div><div class="script-desc">監測 [data-ani] 元素進入視窗 → 加 .ani-visible 觸發進場動畫</div></div>
+      <div class="script-row"><div class="script-fn">backToTop</div><div class="script-desc">滾動 > 400px → .back-to-top.visible；點擊平滑回頂</div></div>
+      <div class="script-row"><div class="script-fn">countUp (data-count)</div><div class="script-desc">英雄區統計數字滾動計數動畫（進入視窗時觸發）</div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       11. RWD 斷點總覽
+  ═══════════════════════════════════════════ -->
+  <div class="sec-block c-global">
+    <div class="sec-head">
+      <span>📱</span>
+      <span>⑪ 響應式斷點（RWD Breakpoints）總覽</span>
+      <span class="stag badge tag-rwd">style.css</span>
+    </div>
+    <div class="sec-body">
+      <table class="rwd-table">
+        <thead>
+          <tr>
+            <th>斷點</th>
+            <th>裝置</th>
+            <th>Navbar</th>
+            <th>Hero</th>
+            <th>About/Svc/Pop/FAQ</th>
+            <th>Footer</th>
+            <th>其他</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>≥ 961px</td>
+            <td>桌機（預設）</td>
+            <td>完整橫排：品牌+連結+社群</td>
+            <td>左文右圖 2欄</td>
+            <td>3欄 grid</td>
+            <td>4欄 grid</td>
+            <td>desktop-stats 顯示</td>
+          </tr>
+          <tr>
+            <td>≤ 960px</td>
+            <td>平板</td>
+            <td>連結可見，社群可見</td>
+            <td>1欄；照片移頂</td>
+            <td>2欄 grid</td>
+            <td>2欄；品牌佔全行</td>
+            <td>proc-line 隱藏</td>
+          </tr>
+          <tr>
+            <td>≤ 900px</td>
+            <td>小平板</td>
+            <td>—</td>
+            <td>1欄；photo h:320px</td>
+            <td>—</td>
+            <td>—</td>
+            <td>mobile-stats 顯示；desktop-stats 隱藏</td>
+          </tr>
+          <tr>
+            <td>≤ 640px</td>
+            <td>手機</td>
+            <td>nav-center/socials 隱藏；漢堡顯示</td>
+            <td>photo h:240px；CTA 直式</td>
+            <td>1欄 grid</td>
+            <td>1欄垂直</td>
+            <td>contact QR 移頂；--nav-h:52px</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /arch-wrap -->
+
+</body>
+</html>
